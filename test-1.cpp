@@ -20,7 +20,7 @@ int main(int argc, char** argv)
 
     cout << "file name : " << filename0 << endl;
     cout << "page_count : " << iminfo.page_count << endl;
-    cout << "imquery resultcode : " << names[iminfo.resultcode] << endl << endl;
+    cout << "imquery result code : " << names[iminfo.result_code] << endl << endl;
 
     for (int i = 0; i < iminfo.page_count; i++)
     {
@@ -42,7 +42,7 @@ int main(int argc, char** argv)
 
     cout << "file name : " << filename1 << endl;
     cout << "page_count : " << iminfo.page_count << endl;
-    cout << "imquery resultcode : " << names[iminfo.resultcode] << endl << endl;
+    cout << "imquery result code : " << names[iminfo.result_code] << endl << endl;
 
     for (int i = 0; i < iminfo.page_count; i++)
     {
@@ -71,7 +71,7 @@ int main(int argc, char** argv)
     cout << "\n+++++++ here we are reading the file we wrote earlier +++++++++++\n\n";
     cout << "file name : multipage-test.tif" << endl;
     cout << "page_count : " << iminfo.page_count << endl;
-    cout << "imquery resultcode : " << names[iminfo.resultcode] << endl << endl;
+    cout << "imquery result code : " << names[iminfo.result_code] << endl << endl;
 
     for (int i = 0; i < iminfo.page_count; i++)
     {
