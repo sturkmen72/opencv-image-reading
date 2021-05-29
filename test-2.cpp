@@ -15,7 +15,7 @@ int imreadNEWTest1(const char* fmt)
     for (int i = 1; i < 101; i++)
     {
         String filename = cv::format(fmt, i);
-        imread(filename,frame);
+        imread(filename, frame, IMREAD_UNCHANGED);
 
         if (frame.empty())
         {
@@ -42,7 +42,7 @@ int imreadNEWTest2(const char* fmt)
         String filename = cv::format(fmt, i);
         imInfo iminfo = imquery(filename);
         if (iminfo.page_count > 0)
-            imread(filename,frame);
+            imread(filename, frame, IMREAD_UNCHANGED);
 
         if (frame.empty())
         {
@@ -67,7 +67,7 @@ int imreadTest(const char* fmt)
     for (int i = 1; i < 101; i++)
     {
         String filename = cv::format(fmt, i);
-        frame = imread(filename);
+        frame = imread(filename, IMREAD_UNCHANGED);
         if (frame.empty())
         {
             break;
