@@ -34,7 +34,7 @@ int imreadNEWTest1(const char* fmt)
 
 int imreadNEWTest2(const char* fmt)
 {
-    Mat frame;
+    UMat frame;
     size_t nFrames = 0;
     int64 t0 = cv::getTickCount();
     for (int i = 1; i < 101; i++)
