@@ -55,7 +55,7 @@ int main(int argc, char** argv)
         cout << "scalable : " << pageinfo.scalable << endl << endl;
     }
 
-    pageInfo = pageinfo = iminfo.getPageInfo();
+    pageInfo pageinfo = iminfo.getPageInfo();
     Mat roi = img(Rect(30, 100, pageInfo.width / 2, pageInfo.height / 2));
     cout << "imread result code: " << imread(filename1, roi, IMREAD_REDUCED_COLOR_2) << endl;
 
