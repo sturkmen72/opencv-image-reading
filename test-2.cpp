@@ -41,7 +41,7 @@ int imreadNEWTest2(const char* fmt)
     {
         String filename = cv::format(fmt, i);
         imInfo iminfo = imquery(filename);
-        if (iminfo.page_count > 0)
+        if (iminfo.page_count() > 0)
             imread(filename, frame, IMREAD_UNCHANGED);
 
         if (frame.empty())
