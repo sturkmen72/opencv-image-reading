@@ -16,20 +16,19 @@ int main(int argc, char** argv)
         "IMREAD_UNKNOWN_FILE_TYPE","IMREAD_READ_HEADER_ERROR", "IMREAD_READ_DATA_ERROR" };
 
     String filename0 = argv[1];
-    imInfo iminfo = imquery(filename0);
+    imquery iminfo(filename0);
 
     cout << "file name : " << filename0 << endl;
     cout << "page_count : " << iminfo.page_count() << endl;
-    cout << "imquery result code : " << names[iminfo.result_code] << endl << endl;
+    cout << "imquery result code : " << names[iminfo.result_code()] << endl << endl;
 
     for (int i = 0; i < iminfo.page_count(); i++)
     {
-        pageInfo pageinfo = iminfo.getPageInfo(i);
         cout << "page index : " << i << endl;
-        cout << "type : " << pageinfo.type << endl;
-        cout << "width : " << pageinfo.width << endl;
-        cout << "height : " << pageinfo.height << endl;
-        cout << "scalable : " << pageinfo.scalable << endl << endl;
+        cout << "type : " << iminfo.type(i) << endl;
+        cout << "width : " << iminfo.width(i) << endl;
+        cout << "height : " << iminfo.height(i) << endl;
+        cout << "scalable : " << iminfo.scalable(i) << endl << endl;
     }
 
     Mat img;
@@ -43,20 +42,18 @@ int main(int argc, char** argv)
 
     cout << "file name : " << filename1 << endl;
     cout << "page_count : " << iminfo.page_count() << endl;
-    cout << "imquery result code : " << names[iminfo.result_code] << endl << endl;
+    cout << "imquery result code : " << names[iminfo.result_code()] << endl << endl;
 
     for (int i = 0; i < iminfo.page_count(); i++)
     {
-        pageInfo pageinfo = iminfo.getPageInfo(i);
         cout << "page index : " << i << endl;
-        cout << "type : " << pageinfo.type << endl;
-        cout << "width : " << pageinfo.width << endl;
-        cout << "height : " << pageinfo.height << endl;
-        cout << "scalable : " << pageinfo.scalable << endl << endl;
+        cout << "type : " << iminfo.type(i) << endl;
+        cout << "width : " << iminfo.width(i) << endl;
+        cout << "height : " << iminfo.height(i) << endl;
+        cout << "scalable : " << iminfo.scalable(i) << endl << endl;
     }
 
-    pageInfo pageinfo = iminfo.getPageInfo();
-    Mat roi = img(Rect(30, 100, pageInfo.width / 2, pageInfo.height / 2));
+    Mat roi = img(Rect(30, 100, iminfo.width() / 2, iminfo.height() / 2));
     cout << "imread result code: " << imread(filename1, roi, IMREAD_REDUCED_COLOR_2) << endl;
 
     imwrite("multipage-2.jpg", img);
@@ -69,21 +66,20 @@ int main(int argc, char** argv)
     images.push_back(gray);
     imwritemulti("multipage-test.tif", images);
 
-    iminfo = imquery("multipage-test.tif");
+    imquery iminfo("multipage-test.tif");
 
     cout << "\n+++++++ here we are reading the file we wrote earlier +++++++++++\n\n";
     cout << "file name : multipage-test.tif" << endl;
     cout << "page_count : " << iminfo.page_count() << endl;
-    cout << "imquery result code : " << names[iminfo.result_code] << endl << endl;
+    cout << "imquery result code : " << names[iminfo.result_code()] << endl << endl;
 
     for (int i = 0; i < iminfo.page_count; i++)
     {
-        pageInfo pageinfo = iminfo.getPageInfo(i);
         cout << "page index : " << i << endl;
-        cout << "type : " << pageinfo.type << endl;
-        cout << "width : " << pageinfo.width << endl;
-        cout << "height : " << pageinfo.height << endl;
-        cout << "scalable : " << pageinfo.scalable << endl << endl;
+        cout << "type : " << iminfo.type(i) << endl;
+        cout << "width : " << iminfo.width(i) << endl;
+        cout << "height : " << iminfo.height(i) << endl;
+        cout << "scalable : " << iminfo.scalable(i) << endl << endl;
     }
 
     imshow("multipage-2.jpg", img);
