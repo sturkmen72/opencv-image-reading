@@ -73,7 +73,7 @@ int main(int argc, char** argv)
     cout << "page_count : " << iminfo3.page_count() << endl;
     cout << "imquery result code : " << names[iminfo3.result_code()] << endl << endl;
 
-    for (int i = 0; i < iminfo3.page_count; i++)
+    for (int i = 0; i < iminfo3.page_count(); i++)
     {
         cout << "page index : " << i << endl;
         cout << "type : " << iminfo3.type(i) << endl;
