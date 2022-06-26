@@ -64,6 +64,9 @@ int main(int argc, char** argv)
     Mat gray;
     cvtColor(roi, gray, COLOR_BGR2GRAY);
     images.push_back(gray);
+    Mat grayf;
+    gray.convertto(grayf, CV_32F);
+    images.push_back(grayf);
     imwritemulti("multipage-test.tif", images);
 
     imquery iminfo3("multipage-test.tif");
