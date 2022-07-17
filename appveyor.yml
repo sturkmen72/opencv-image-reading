@@ -14,6 +14,7 @@ install:
   - cmd: cmake --build . --config Release
   - cmd: cd..
   - cmd: set OpenCV_DIR=C:\projects\opencv-image-reading\build-opencv
+  - cmd: set OPENCV_TEST_DATA_PATH=C:\projects\opencv_extra\testdata
 build_script:
   - cmd: md build
   - cmd: cd build
@@ -22,6 +23,7 @@ build_script:
 
 test_script:
   - cmd: set PATH=C:\projects\opencv-image-reading\build-opencv\bin\Release
+  - cmd: C:\projects\opencv-image-reading\build-opencv\bin\Release\opencv_test_imgcodecs.exe
   - cmd: C:\projects\opencv-image-reading\build\Release\test-2.exe
   - cmd: C:\projects\opencv-image-reading\build\Release\test-1.exe ../multipage.tif ../lena-premature.jpg
   - cmd: C:\projects\opencv-image-reading\build\Release\test-1.exe non-exist.file
