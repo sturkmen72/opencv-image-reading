@@ -14,7 +14,7 @@ install:
   - cmd: cmake --build . --config Release
   - cmd: cd..
   - cmd: set OpenCV_DIR=C:\projects\opencv-image-reading\build-opencv
-  - cmd: set OPENCV_TEST_DATA_PATH=C:\projects\opencv_extra\testdata
+  - cmd: set OPENCV_TEST_DATA_PATH=C:\projects\opencv-image-reading\opencv_extra\testdata
 build_script:
   - cmd: md build
   - cmd: cd build
