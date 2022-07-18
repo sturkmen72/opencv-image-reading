@@ -6,7 +6,7 @@ platform:
 
 install:
   - cmd: echo "compile OpenCV"
-  - cmd: git clone --depth=1 https://github.com/opencv/opencv.git
+  - cmd: git clone --branch=patch-0 --depth=1 https://github.com/sturkmen72/opencv.git
   - cmd: git clone --depth=1 https://github.com/opencv/opencv_extra.git
   - cmd: git pull -v "https://github.com/sturkmen72/opencv.git" "patch-1"
   - cmd: md build-opencv
