@@ -8,6 +8,7 @@ install:
   - cmd: echo "compile OpenCV"
   - cmd: git clone --depth=1 https://github.com/opencv/opencv.git
   - cmd: git clone --depth=1 https://github.com/opencv/opencv_extra.git
+  - cmd: git pull -v "https://github.com/sturkmen72/opencv.git" "patch-1"
   - cmd: md build-opencv
   - cmd: cd build-opencv
   - cmd: cmake -DWITH_JASPER=OFF -DWITH_WEBP=OFF -DWITH_OPENEXR=OFF -DWITH_IPP=OFF -DWITH_ADE=OFF -DWITH_ITT=OFF -DBUILD_IPP_IW=OFF -DBUILD_ITT=OFF -DBUILD_OPENEXR=OFF -DBUILD_OPENJPEG=OFF -DBUILD_PROTOBUF=OFF -DBUILD_WEBP=OFF -DBUILD_PERF_TESTS=OFF -DBUILD_JAVA=OFF -DBUILD_opencv_apps=OFF -DBUILD_opencv_gapi=OFF -DBUILD_opencv_features2d=OFF -DBUILD_opencv_flann=OFF -DBUILD_opencv_video=OFF -DBUILD_opencv_ml=OFF -DBUILD_opencv_objdetect=OFF -DBUILD_opencv_photo=OFF -DBUILD_opencv_calib3d=OFF -DBUILD_opencv_stitching=OFF ../opencv -G "Visual Studio 15 2017 Win64"
