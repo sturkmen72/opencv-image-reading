@@ -22,6 +22,7 @@ int imreadTest(const char* fmt)
             break;
         }
         imwrite(sfilename,frame);
+		frame = imread(sfilename, IMREAD_UNCHANGED);
         nFrames++;
     }
 
