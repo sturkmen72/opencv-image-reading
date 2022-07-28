@@ -34,7 +34,11 @@ int pngWritingParamsTest()
         {
             compression_params[1] = i;
             compression_params[3] = j;
+            TickMeter tm;
+            tm.start();
             imwrite(format("PNG_STRATEGY_%d_PNG_COMPRESSION_%d.png", j, i), mat, compression_params);
+            tm.stop();
+            std::cout << format("PNG_STRATEGY_%d_PNG_COMPRESSION_%d.png", j, i) << "saved in " << tm << std::endl;
         }
     imwrite("PNG_SAVED_DEFAULT.png", mat);
     return 0;
@@ -45,7 +49,7 @@ int main()
     pngWritingParamsTest();
 
     vector<String> filenames;
-    String folder = "C:/projects/opencv-image-reading/*.png";
+    String folder = "C:/projects/opencv-image-reading/pngsuite/*.png";
     glob(folder, filenames);
 
     for (size_t i = 0; i < filenames.size(); i++)
