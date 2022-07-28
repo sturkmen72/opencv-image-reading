@@ -38,7 +38,7 @@ int pngWritingParamsTest()
             tm.start();
             imwrite(format("PNG_STRATEGY_%d_PNG_COMPRESSION_%d.png", j, i), mat, compression_params);
             tm.stop();
-            std::cout << format("PNG_STRATEGY_%d_PNG_COMPRESSION_%d.png", j, i) << "saved in " << tm << std::endl;
+            std::cout << format("PNG_STRATEGY_%d_PNG_COMPRESSION_%d.png", j, i) << "  saved in " << tm.getTimeMilli() << " ms." << std::endl;
         }
     imwrite("PNG_SAVED_DEFAULT.png", mat);
     return 0;
