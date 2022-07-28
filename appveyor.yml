@@ -35,6 +35,7 @@ build_script:
 test_script:
   - cmd: set PATH=C:\projects\opencv-image-reading\build-opencv\bin\Release
   - cmd: C:\projects\opencv-image-reading\build-opencv\bin\Release\opencv_test_imgcodecs.exe
+  - cmd: C:\projects\opencv-image-reading\build\Release\test-1.exe
   - cmd: C:\projects\opencv-image-reading\build\Release\test-2.exe
   - cmd: C:\projects\opencv-image-reading\build-opencv\bin\Release\opencv_test_imgcodecs.exe
   - cmd: C:\projects\opencv-image-reading\build\Release\test-2.exe
