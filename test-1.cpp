@@ -21,7 +21,7 @@ void createAlphaMat(Mat& mat)
 int pngWritingParamsTest()
 {
     // Create mat with alpha channel
-    Mat mat(480, 640, CV_8UC4);
+    Mat mat(1440, 1920, CV_8UC4);
     createAlphaMat(mat);
 
     vector<int> compression_params;
@@ -38,7 +38,13 @@ int pngWritingParamsTest()
             tm.start();
             imwrite(format("PNG_STRATEGY_%d_PNG_COMPRESSION_%d.png", j, i), mat, compression_params);
             tm.stop();
-            std::cout << format("PNG_STRATEGY_%d_PNG_COMPRESSION_%d.png", j, i) << "  saved in " << tm.getTimeMilli() << " ms." << std::endl;
+            std::cout << format("PNG_STRATEGY_%d_PNG_COMPRESSION_%d.png", j, i) << "  saved in " << tm.getTimeMilli() << " ms.";
+			
+            tm.reset();
+            tm.start();
+            Mat img = imread(format("PNG_STRATEGY_%d_PNG_COMPRESSION_%d.png", j, i));
+            tm.stop();
+            std::cout << " \t read time " << tm.getTimeMilli() << " ms." << std::endl;
         }
     imwrite("PNG_SAVED_DEFAULT.png", mat);
     return 0;
