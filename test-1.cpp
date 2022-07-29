@@ -48,7 +48,7 @@ int pngWritingParamsTest()
         }
     tm.reset();
     tm.start();
-    imwrite("PNG_SAVED_DEFAULT.png", mat);
+    imwrite("PNG_SAVED_DEFAULT.png", mat, { IMWRITE_PNG_COMPRESSION, 9 });
     tm.stop();
     std::cout << "PNG_SAVED_DEFAULT.png" << "  saved in " << tm.getTimeMilli() << " ms.";
 
