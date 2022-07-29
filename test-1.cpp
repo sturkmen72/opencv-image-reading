@@ -70,13 +70,15 @@ int main()
 
     for (size_t i = 0; i < filenames.size(); i++)
     {
+        TickMeter tm;
+        tm.start();
         Mat src = imread(filenames[i], IMREAD_UNCHANGED);
-
+        tm.stop();
         if (src.empty())
             std::cout << filenames[i] << "--------- Could not read the image" << std::endl;
         else
         {
-            std::cout << filenames[i] << std::endl;
+            std::cout << filenames[i] << " \t read time " << tm.getTimeMilli() << " ms." << std::endl;
         }
 
     }
