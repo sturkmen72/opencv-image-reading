@@ -20,6 +20,7 @@ void createAlphaMat(Mat& mat)
 
 int pngWritingParamsTest()
 {
+    TickMeter tm;
     // Create mat with alpha channel
     Mat mat(1440, 1920, CV_8UC4);
     createAlphaMat(mat);
@@ -34,7 +35,6 @@ int pngWritingParamsTest()
         {
             compression_params[1] = i;
             compression_params[3] = j;
-            TickMeter tm;
             tm.start();
             imwrite(format("PNG_STRATEGY_%d_PNG_COMPRESSION_%d.png", j, i), mat, compression_params);
             tm.stop();
@@ -46,7 +46,17 @@ int pngWritingParamsTest()
             tm.stop();
             std::cout << " \t read time " << tm.getTimeMilli() << " ms." << std::endl;
         }
+    tm.reset();
+    tm.start();
     imwrite("PNG_SAVED_DEFAULT.png", mat);
+    tm.stop();
+    std::cout << "PNG_SAVED_DEFAULT.png" << "  saved in " << tm.getTimeMilli() << " ms.";
+
+    tm.reset();
+    tm.start();
+    Mat img = imread("PNG_SAVED_DEFAULT.png");
+    tm.stop();
+    std::cout << " \t read time " << tm.getTimeMilli() << " ms." << std::endl;
     return 0;
 }
 
