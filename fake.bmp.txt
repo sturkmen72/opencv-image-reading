@@ -1,2 +1,2 @@
 BM
-Fake BMP
+Fake BMP.
