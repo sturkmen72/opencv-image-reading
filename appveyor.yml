@@ -6,6 +6,7 @@ platform:
 
 install:
   - cmd: echo "compile OpenCV"
+  - cmd: nasm
   - cmd: git clone --branch=libspng https://github.com/ocpalo/opencv.git
   - cmd: git clone --depth=1 https://github.com/opencv/opencv_extra.git
   - cmd: md build-opencv
