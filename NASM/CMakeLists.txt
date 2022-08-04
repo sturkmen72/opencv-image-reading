@@ -65,6 +65,14 @@ endif()
 
 message(STATUS "${BITS}-bit build (${CPU_TYPE})")
 
+macro(boolean_number var)
+  if(${var})
+    set(${var} 1 ${ARGN})
+  else()
+    set(${var} 0 ${ARGN})
+  endif()
+endmacro()
+
 option(REQUIRE_SIMD "Generate a fatal error if SIMD extensions are not available for this platform (default is to fall back to a non-SIMD build)" FALSE)
 option(WITH_ARITH_ENC "Include arithmetic encoding support when emulating the libjpeg v6b API/ABI" TRUE)
 option(WITH_ARITH_DEC "Include arithmetic decoding support when emulating the libjpeg v6b API/ABI" TRUE)
@@ -175,8 +183,6 @@ set(JPEG_SOURCES ${JPEG_SOURCES} ${SIMD_OBJS})
 
 # No SIMD
 # set(JPEG_SOURCES ${JPEG_SOURCES} jsimd_none.c)
-
-ocv_list_add_prefix(JPEG_SOURCES src/)
 
 add_library(${JPEG_LIBRARY} STATIC ${OPENCV_3RDPARTY_EXCLUDE_FROM_ALL} ${JPEG_SOURCES} $<TARGET_OBJECTS:simd>
         ${SIMD_OBJS})
