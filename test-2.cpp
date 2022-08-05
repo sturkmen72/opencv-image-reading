@@ -15,14 +15,12 @@ int imreadTest(const char* fmt)
     for (int i = 1; i < 101; i++)
     {
         String filename = cv::format(fmt, i);
-        String sfilename = cv::format("C:/projects/opencv-image-reading/sequence/%08d.png", i);
+        String sfilename = cv::format("C:/projects/opencv-image-reading/sequence/%08d.jpg", i);
         frame = imread(filename, IMREAD_UNCHANGED);
         if (frame.empty())
         {
             break;
         }
-        imwrite(sfilename,frame);
-		frame = imread(sfilename, IMREAD_UNCHANGED);
         nFrames++;
     }
 
