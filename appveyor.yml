@@ -11,7 +11,7 @@ install:
   - cmd: set PATH=%PATH%;C:\projects\opencv-image-reading\NASM
   - cmd: cd ..
   - cmd: nasm -v
-  - cmd: git clone --branch=jpegasm https://github.com/ocpalo/opencv.git
+  - cmd: git clone --branch=gsoc https://github.com/sturkmen72/opencv.git
   - cmd: git clone --depth=1 https://github.com/opencv/opencv_extra.git
   - cmd: md build-opencv
   - cmd: cd build-opencv
