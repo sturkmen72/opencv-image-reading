@@ -80,7 +80,7 @@ int main()
             std::cout << filenames[i] << "--------- Could not read the image" << std::endl;
         else
         {
-            std::cout << filenames[i] << " \t read time " << tm.getTimeMilli() << " ms." << std::endl;
+            std::cout << filenames[i] << " \t read time " << tm.getTimeMilli() << " ms. \t" << src.channels() << " channels" <<std::endl;
         }
 
     }
