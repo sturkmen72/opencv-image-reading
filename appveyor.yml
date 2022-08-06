@@ -31,16 +31,6 @@ install:
   - cmd: C:\projects\opencv-image-reading\build\Release\test-1.exe
   - cmd: C:\projects\opencv-image-reading\build\Release\test-2.exe
   - cmd: C:\projects\opencv-image-reading\build\Release\test-2.exe
-  - cmd: cd opencv
-  - cmd: git reset --hard 734190964a310ca361a9ba721e4b27bab2cf6302
-  - cmd: cd..
-  - cmd: cd build-opencv
-  - cmd: cmake --build . --config Release
-  - cmd: cd..
-  - cmd: C:\projects\opencv-image-reading\build\Release\test-1.exe
-  - cmd: C:\projects\opencv-image-reading\build\Release\test-1.exe
-  - cmd: C:\projects\opencv-image-reading\build\Release\test-2.exe
-  - cmd: C:\projects\opencv-image-reading\build\Release\test-2.exe
 
 build_script:
   - cmd: cd build
