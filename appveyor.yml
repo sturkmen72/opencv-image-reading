@@ -6,7 +6,7 @@ platform:
 
 install:
   - cmd: echo "compile OpenCV"
-  - cmd: git clone --branch=libspng-review2 https://github.com/sturkmen72/opencv.git
+  - cmd: git clone --branch=gsoc https://github.com/sturkmen72/opencv.git
   - cmd: git clone --depth=1 https://github.com/opencv/opencv_extra.git
   - cmd: md build-opencv
   - cmd: cd build-opencv
@@ -27,7 +27,7 @@ install:
   - cmd: C:\projects\opencv-image-reading\build\Release\test-2.exe
   - cmd: C:\projects\opencv-image-reading\build\Release\test-2.exe
   - cmd: cd opencv
-  - cmd: git reset --hard 606a9bc42d8b98fc8d2a0e3ddd9cd5fbf5c47f92
+  - cmd: git reset --hard b62599c8e00e01bd018202040c0ebef3fc4fb5a2
   - cmd: cd..
   - cmd: cd build-opencv
   - cmd: cmake --build . --config Release
