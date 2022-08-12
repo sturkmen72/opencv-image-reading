@@ -5,7 +5,7 @@ platform:
   - x64
 
 install:
-  - cmd: echo "compile OpenCV without NASM to enable inline assembly code"
+  - cmd: echo "compile OpenCV with NASM to enable inline assembly code"
   - cmd: cd NASM
   - cmd: 7z e NASM.zip
   - cmd: set PATH=%PATH%;C:\projects\opencv-image-reading\NASM
