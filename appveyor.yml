@@ -6,11 +6,6 @@ platform:
 
 install:
   - cmd: echo "compile OpenCV without NASM to enable inline assembly code, test"
-  - cmd: cd NASM
-  - cmd: 7z e NASM.zip
-  - cmd: set PATH=%PATH%;C:\projects\opencv-image-reading\NASM
-  - cmd: cd ..
-  - cmd: nasm -v
   - cmd: git clone --branch=libjpegturbo_nasm https://github.com/ocpalo/opencv.git
   - cmd: git clone --depth=1 https://github.com/opencv/opencv_extra.git
   - cmd: md build-opencv
