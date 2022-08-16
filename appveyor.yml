@@ -1,8 +1,8 @@
 version: 1.0.{build}
-image: Visual Studio 2017
+image: macOS-Catalina
 
 platform:
-  - x64
+  - ARM
 
 install:
   - cmd: echo "compile OpenCV with NASM to enable inline assembly code"
