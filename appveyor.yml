@@ -9,8 +9,8 @@ install:
   - git clone --depth=1 https://github.com/opencv/opencv_extra.git
   - mkdir build-opencv
   - cd build-opencv
-  - cmake -B build -G Ninja -DWITH_LIBJPEG_TURBO_SIMD=ON -DWITH_JASPER=OFF -DWITH_WEBP=OFF -DWITH_OPENEXR=OFF -DWITH_IPP=OFF -DWITH_ADE=OFF -DWITH_ITT=OFF -DBUILD_IPP_IW=OFF -DBUILD_ITT=OFF -DBUILD_OPENEXR=OFF -DBUILD_OPENJPEG=OFF -DBUILD_PROTOBUF=OFF -DBUILD_WEBP=OFF -DBUILD_PERF_TESTS=OFF -DBUILD_JAVA=OFF -DBUILD_opencv_apps=OFF -DBUILD_opencv_gapi=OFF -DBUILD_opencv_features2d=OFF -DBUILD_opencv_flann=OFF -DBUILD_opencv_video=OFF -DBUILD_opencv_ml=OFF -DBUILD_opencv_objdetect=OFF -DBUILD_opencv_photo=OFF -DBUILD_opencv_calib3d=OFF -DBUILD_opencv_stitching=OFF ../opencv
-  - cmake --build . --config Release
+  - cmake -DWITH_LIBJPEG_TURBO_SIMD=ON -DWITH_JASPER=OFF -DWITH_WEBP=OFF -DWITH_OPENEXR=OFF -DWITH_IPP=OFF -DWITH_ADE=OFF -DWITH_ITT=OFF -DBUILD_IPP_IW=OFF -DBUILD_ITT=OFF -DBUILD_OPENEXR=OFF -DBUILD_OPENJPEG=OFF -DBUILD_PROTOBUF=OFF -DBUILD_WEBP=OFF -DBUILD_PERF_TESTS=OFF -DBUILD_JAVA=OFF -DBUILD_opencv_apps=OFF -DBUILD_opencv_gapi=OFF -DBUILD_opencv_features2d=OFF -DBUILD_opencv_flann=OFF -DBUILD_opencv_video=OFF -DBUILD_opencv_ml=OFF -DBUILD_opencv_objdetect=OFF -DBUILD_opencv_photo=OFF -DBUILD_opencv_calib3d=OFF -DBUILD_opencv_stitching=OFF -DCMAKE_BUILD_TYPE=Release ../opencv
+  - make -j8
   - cd..
   - cmd: set PATH=%PATH%;C:\projects\opencv-image-reading\build-opencv\bin\Release
   - cmd: set OpenCV_DIR=C:\projects\opencv-image-reading\build-opencv
