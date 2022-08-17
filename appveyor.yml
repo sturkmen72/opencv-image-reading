@@ -16,8 +16,6 @@ install:
   - make -j8
   - cd ..
   - export OPENCV_TEST_DATA_PATH="$PWD/opencv_extra/testdata"
-  - export JSIMD_NOHUFFENC=1
   - cd build-opencv/bin/
   - ./opencv_test_objdetect
   - ./opencv_test_videoio
-  - echo "test"
