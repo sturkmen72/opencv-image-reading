@@ -18,5 +18,5 @@ install:
   - cd build-opencv/bin/
   - ./opencv_test_objdetect
   - ./opencv_test_videoio
-
+  - echo "hi"
 
