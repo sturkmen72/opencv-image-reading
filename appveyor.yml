@@ -1,8 +1,8 @@
 version: 1.0.{build}
 image: macOS-Catalina
 
-platform:
-  - ARM
+environment:
+  arch: ARM
 
 install:
   - uname -a
