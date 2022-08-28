@@ -15,7 +15,7 @@ install:
   - cd ..
   - export OPENCV_TEST_DATA_PATH="$PWD/opencv_extra/testdata"
   - cd build-opencv/bin/
-  - ./opencv_test_objdetect
   - ./opencv_test_videoio
+  - ./opencv_test_objdetect
 
 
