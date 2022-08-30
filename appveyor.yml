@@ -5,7 +5,7 @@ platform:
   - x64
 
 install:
-  - cmd: git clone --branch=libjpegturbo2.1.3 https://github.com/ocpalo/opencv.git
+  - cmd: git clone --branch=libjpegturbo_nasm https://github.com/ocpalo/opencv.git
   - cmd: git clone --depth=1 https://github.com/opencv/opencv_extra.git
   - cmd: md build-opencv
   - cmd: cd build-opencv
