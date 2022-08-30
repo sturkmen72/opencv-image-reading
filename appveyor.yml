@@ -1,5 +1,5 @@
 version: 1.0.{build}
-image: Visual Studio 2017
+image: Visual Studio 2019
 
 platform:
   - x64
@@ -15,7 +15,7 @@ install:
   - cmd: git clone --depth=1 https://github.com/opencv/opencv_extra.git
   - cmd: md build-opencv
   - cmd: cd build-opencv
-  - cmd: cmake -DWITH_LIBJPEG_TURBO_SIMD=ON -DWITH_JASPER=OFF -DWITH_WEBP=OFF -DWITH_OPENEXR=OFF -DWITH_IPP=OFF -DWITH_ADE=OFF -DWITH_ITT=OFF -DBUILD_IPP_IW=OFF -DBUILD_ITT=OFF -DBUILD_OPENEXR=OFF -DBUILD_OPENJPEG=OFF -DBUILD_PROTOBUF=OFF -DBUILD_WEBP=OFF -DBUILD_PERF_TESTS=OFF -DBUILD_JAVA=OFF -DBUILD_opencv_apps=OFF -DBUILD_opencv_gapi=OFF -DBUILD_opencv_features2d=ON -DBUILD_opencv_flann=ON -DBUILD_opencv_video=ON -DBUILD_opencv_ml=ON -DBUILD_opencv_objdetect=ON -DBUILD_opencv_photo=OFF -DBUILD_opencv_calib3d=ON -DBUILD_opencv_stitching=OFF ../opencv -G "Visual Studio 15 2017 Win64" 
+  - cmd: cmake -DWITH_LIBJPEG_TURBO_SIMD=ON -DWITH_JASPER=OFF -DWITH_WEBP=OFF -DWITH_OPENEXR=OFF -DWITH_IPP=OFF -DWITH_ADE=OFF -DWITH_ITT=OFF -DBUILD_IPP_IW=OFF -DBUILD_ITT=OFF -DBUILD_OPENEXR=OFF -DBUILD_OPENJPEG=OFF -DBUILD_PROTOBUF=OFF -DBUILD_WEBP=OFF -DBUILD_PERF_TESTS=OFF -DBUILD_JAVA=OFF -DBUILD_opencv_apps=OFF -DBUILD_opencv_gapi=OFF -DBUILD_opencv_features2d=ON -DBUILD_opencv_flann=ON -DBUILD_opencv_video=ON -DBUILD_opencv_ml=ON -DBUILD_opencv_objdetect=ON -DBUILD_opencv_photo=OFF -DBUILD_opencv_calib3d=ON -DBUILD_opencv_stitching=OFF ../opencv -G "Visual Studio 16 2019 Win64" 
   - cmd: cmake --build . --config Release
   - cmd: cd..
   - cmd: set PATH=%PATH%;C:\projects\opencv-image-reading\build-opencv\bin\Release
