@@ -6,7 +6,9 @@ platform:
 
 install:
   - cmd: git clone --branch=libjpegturbo_nasm https://github.com/ocpalo/opencv.git
+  - cmd: cd opencv
   - cmd: git reset --hard 427e3922304ed8bb1d584a6923679f6f73bf5a5f
+  - cmd: cd ..
   - cmd: git clone --depth=1 https://github.com/opencv/opencv_extra.git
   - cmd: md build-opencv
   - cmd: cd build-opencv
