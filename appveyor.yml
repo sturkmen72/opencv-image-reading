@@ -17,6 +17,5 @@ install:
   - cmd: set OpenCV_DIR=C:\projects\opencv-image-reading\build-opencv
   - cmd: set OPENCV_TEST_DATA_PATH=C:\projects\opencv-image-reading\opencv_extra\testdata
   - cmd: C:\projects\opencv-image-reading\build-opencv\bin\Release\opencv_test_imgcodecs.exe
-  - cmd: C:\projects\opencv-image-reading\build-opencv\bin\Release\opencv_test_videoio.exe
   - cmd: C:\projects\opencv-image-reading\build-opencv\bin\Release\opencv_test_objdetect.exe
-
+  - cmd: C:\projects\opencv-image-reading\build-opencv\bin\Release\opencv_test_videoio.exe
