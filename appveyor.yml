@@ -6,6 +6,7 @@ platform:
 
 install:
   - cmd: echo "compile OpenCV with NASM to enable inline assembly code"
+  - cmd: pip install numpy
   - cmd: cd NASM
   - cmd: 7z e NASM.zip
   - cmd: set PATH=%PATH%;C:\projects\opencv-image-reading\NASM
