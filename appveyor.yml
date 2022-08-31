@@ -10,7 +10,7 @@ install:
   - brew install nasm
   - mkdir build-opencv
   - cd build-opencv
-  - cmake -DWITH_JASPER=OFF -DWITH_WEBP=OFF -DWITH_OPENEXR=OFF -DWITH_IPP=OFF -DWITH_ADE=OFF -DWITH_ITT=OFF -DBUILD_IPP_IW=OFF -DBUILD_ITT=OFF -DBUILD_OPENEXR=OFF -DBUILD_OPENJPEG=OFF -DBUILD_PROTOBUF=OFF -DBUILD_WEBP=OFF -DBUILD_PERF_TESTS=OFF -DBUILD_JAVA=OFF -DBUILD_opencv_apps=OFF -DBUILD_opencv_gapi=OFF -DBUILD_opencv_features2d=ON -DBUILD_opencv_flann=ON -DBUILD_opencv_video=ON -DBUILD_opencv_ml=ON -DBUILD_opencv_objdetect=ON -DBUILD_opencv_photo=OFF -DBUILD_opencv_calib3d=ON -DBUILD_opencv_stitching=OFF -DCMAKE_BUILD_TYPE=Release ..
+  - cmake -DWITH_JASPER=OFF -DWITH_WEBP=OFF -DWITH_OPENEXR=OFF -DWITH_IPP=OFF -DWITH_ADE=OFF -DWITH_ITT=OFF -DBUILD_IPP_IW=OFF -DBUILD_ITT=OFF -DBUILD_OPENEXR=OFF -DBUILD_OPENJPEG=OFF -DBUILD_PROTOBUF=OFF -DBUILD_WEBP=OFF -DBUILD_PERF_TESTS=OFF -DBUILD_JAVA=OFF -DBUILD_opencv_apps=OFF -DBUILD_opencv_gapi=OFF -DBUILD_opencv_features2d=ON -DBUILD_opencv_flann=ON -DBUILD_opencv_video=ON -DBUILD_opencv_ml=ON -DBUILD_opencv_objdetect=ON -DBUILD_opencv_photo=OFF -DBUILD_opencv_calib3d=ON -DBUILD_opencv_stitching=OFF -DCMAKE_BUILD_TYPE=Release ../opencv
   - make -j8
   - cd ..
   - export OPENCV_TEST_DATA_PATH="$PWD/opencv_extra/testdata"
