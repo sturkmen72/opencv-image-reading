@@ -5,7 +5,7 @@ platform:
   - ARM
 
 install:
-  - git clone --branch=libjpegturbo_nasm https://github.com/ocpalo/opencv.git
+  - git clone --branch=test_nasm https://github.com/ocpalo/opencv.git
   - git clone --depth=1 https://github.com/opencv/opencv_extra.git
   - brew install nasm
   - mkdir build-opencv
