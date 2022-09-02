@@ -1,5 +1,5 @@
 version: 1.0.{build}
-image: Visual Studio 2017
+image: Visual Studio 2019
 
 platform:
   - x64
@@ -19,7 +19,7 @@ install:
   - cmd: C:\projects\opencv-image-reading\build-opencv\bin\Release\opencv_test_imgcodecs.exe
   - cmd: md build
   - cmd: cd build
-  - cmd: cmake .. -G "Visual Studio 15 2017 Win64"
+  - cmd: cmake .. -G "Visual Studio 16 2019"
   - cmd: cmake --build . --config Release
   - cmd: cd..
   - cmd: C:\projects\opencv-image-reading\build\Release\test-1.exe
@@ -29,7 +29,7 @@ install:
 
 build_script:
   - cmd: cd build
-  - cmd: cmake .. -G "Visual Studio 15 2017 Win64"
+  - cmd: cmake .. -G "Visual Studio 16 2019"
   - cmd: cmake --build . --config Release
 
 test_script:
