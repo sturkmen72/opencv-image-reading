@@ -66,7 +66,7 @@ int main()
 {
     vector<Mat> mats;
 
-    for (int i = 0; i < 100; i++)
+    for (int i = 0; i < 200; i++)
     {
         Mat img(640, 640, CV_8UC3);
         randu(img, Scalar(0, 0, 0), Scalar(255, 255, 255));
@@ -87,15 +87,17 @@ int main()
     cout << "imcount:" << tm << endl;
     tm.reset();
     tm.start();
-    imreadmulti("test100.tif", rmats, 99, 1, 0);
+    bool ret = imreadmulti("test100.tif", rmats, 199, 1, 0);
     tm.stop();
-    cout << "99:" << tm << endl;
-    imwrite("test99.jpg",rmats[0]); 
+    cout << "199:" << tm << endl;
+    cout << "result of imreadmulti : " << ret << endl;
+    imwrite("test199.jpg",rmats[0]); 
     tm.reset();
     tm.start();
-    imreadmulti("test100.tif", rmats, 45, 1, 0);
+    ret = imreadmulti("test100.tif", rmats, 45, 1, 0);
     tm.stop();
     cout << "45:" << tm << endl;
+    cout << "result of imreadmulti : " << ret << endl;
     imwrite("test45.jpg",rmats[1]);
     tm.reset();
     tm.start();
@@ -112,7 +114,7 @@ int main()
 
     tm.reset();
     tm.start();
-    bool ret = imreadmulti("test100.tiff", rmats, 8, 1, IMREAD_REDUCED_GRAYSCALE_8);
+    ret = imreadmulti("test100.tiff", rmats, 8, 1, IMREAD_REDUCED_GRAYSCALE_8);
     tm.stop();
     cout << "result of imreadmulti : " << ret << endl;
     return 0;
