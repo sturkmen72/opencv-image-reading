@@ -89,5 +89,59 @@ int main(int argc, char** argv)
 
     imshow("multipage-2.jpg", img);
     waitKey(1000);
+    
+    vector<Mat> mats;
+
+    for (int i = 0; i < 200; i++)
+    {
+        Mat img(640, 640, CV_8UC3);
+        randu(img, Scalar(0, 0, 0), Scalar(255, 255, 255));
+        putText(img, format("%d", i),
+                Point(img.cols / 4, img.rows / 2),
+                FONT_HERSHEY_COMPLEX, 5, Scalar(0, 0, 255),4);
+        mats.push_back(img.clone());
+        //imshow("random colors image", img);
+        //waitKey(1);
+    }
+    imwrite("test100.tif", mats);
+
+    vector<Mat> rmats;
+    TickMeter tm;
+    tm.start();
+    size_t imcnt = imcount("test100.tif", 1);
+    tm.stop();
+    cout << "imcount:" << tm << endl;
+    tm.reset();
+    tm.start();
+    bool ret = imreadmulti("test100.tif", rmats, 199, 1, 0);
+    tm.stop();
+    cout << "199:" << tm << endl;
+    cout << "result of imreadmulti : " << ret << endl;
+    imwrite("test199.jpg",rmats[0]); 
+    tm.reset();
+    tm.start();
+    ret = imreadmulti("test100.tif", rmats, 45, 1, 0);
+    tm.stop();
+    cout << "45:" << tm << endl;
+    cout << "result of imreadmulti : " << ret << endl;
+    imwrite("test45.jpg",rmats[1]);
+    tm.reset();
+    tm.start();
+    imreadmulti("test100.tif", rmats, 2, 1, 0);
+    tm.stop();
+    cout << "2:" << tm << endl;
+    imwrite("test2.jpg",rmats[2]);
+    tm.reset();
+    tm.start();
+    imreadmulti("test100.tif", rmats, 8, 1, IMREAD_REDUCED_GRAYSCALE_8);
+    tm.stop();
+    cout << "IMREAD_REDUCED_GRAYSCALE_8 8:" << tm << endl;
+    imwrite("test8.jpg",rmats[3]);
+
+    tm.reset();
+    tm.start();
+    ret = imreadmulti("test100.tiff", rmats, 8, 1, IMREAD_REDUCED_GRAYSCALE_8);
+    tm.stop();
+    cout << "result of imreadmulti : " << ret << endl;
     return 0;
 }
