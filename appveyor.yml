@@ -6,7 +6,7 @@ platform:
 
 install:
   - cmd: echo "compile OpenCV test multipage_img_decode"
-  - cmd: git clone --depth=1 https://github.com/opencv/opencv.git
+  - cmd: git clone --branch=multipage_img_decoder https://github.com/ocpalo/opencv.git
   - cmd: git clone --depth=1 https://github.com/opencv/opencv_extra.git
   - cmd: md build-opencv
   - cmd: cd build-opencv
