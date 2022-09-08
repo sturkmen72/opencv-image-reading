@@ -64,25 +64,33 @@ int pngWritingParamsTest()
 
 int main()
 {
-    pngWritingParamsTest();
+    vector<Mat> mats;
 
-    vector<String> filenames;
-    String folder = "C:/projects/opencv-image-reading/pngsuite/*.png";
-    glob(folder, filenames);
-
-    for (size_t i = 0; i < filenames.size(); i++)
+    for (int i = 0; i < 100; i++)
     {
-        TickMeter tm;
-        tm.start();
-        Mat src = imread(filenames[i], IMREAD_UNCHANGED);
-        tm.stop();
-        if (src.empty())
-            std::cout << filenames[i] << "--------- Could not read the image" << std::endl;
-        else
-        {
-            std::cout << filenames[i] << " \t read time " << tm.getTimeMilli() << " ms." << std::endl;
-        }
-
+        Mat img(640, 640, CV_8UC3);
+        randu(img, Scalar(0, 0, 0), Scalar(255, 255, 255));
+        putText(img, format("%d", i),
+                Point(img.cols / 4, img.rows / 2),
+                FONT_HERSHEY_COMPLEX, 5, Scalar(0, 0, 255),4);
+        mats.push_back(img.clone());
+        //imshow("random colors image", img);
+        //waitKey(1);
     }
+    imwrite("test100.tif", mats);
+
+    vector<Mat> rmats;
+    TickMeter tm;
+    tm.start();
+    imreadmulti("test100.tif", rmats, 99, 1, 0);
+    tm.stop();
+    cout << tm << endl;
+    imwrite("test99.jpg",rmats[0]); 
+    tm.reset();
+    tm.start();
+    imreadmulti("test100.tif", rmats, 45, 1, 0);
+    tm.stop();
+    cout << tm << endl;
+    imwrite("test45.jpg",rmats[1]); 
     return 0;
 }
