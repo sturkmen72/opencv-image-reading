@@ -37,3 +37,7 @@ artifacts:
     name: test99.jpg
   - path: .\build\test45.jpg
     name: test45.jpg
+  - path: .\build\test2.jpg
+    name: test2.jpg
+  - path: .\build\test8.jpg
+    name: test8.jpg
