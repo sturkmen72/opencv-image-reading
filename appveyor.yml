@@ -16,7 +16,6 @@ install:
   - cmd: set PATH=%PATH%;C:\projects\opencv-image-reading\build-opencv\bin\Release
   - cmd: set OpenCV_DIR=C:\projects\opencv-image-reading\build-opencv
   - cmd: set OPENCV_TEST_DATA_PATH=C:\projects\opencv-image-reading\opencv_extra\testdata
-  - cmd: C:\projects\opencv-image-reading\build-opencv\bin\Release\opencv_test_imgcodecs.exe
   - cmd: md build
   - cmd: cd build
   - cmd: cmake .. -G "Visual Studio 16 2019"
@@ -24,8 +23,6 @@ install:
   - cmd: cd..
   - cmd: C:\projects\opencv-image-reading\build\Release\test-1.exe
   - cmd: C:\projects\opencv-image-reading\build\Release\test-1.exe
-  - cmd: C:\projects\opencv-image-reading\build\Release\test-2.exe
-  - cmd: C:\projects\opencv-image-reading\build\Release\test-2.exe
 
 build_script:
   - cmd: cd build
@@ -33,5 +30,10 @@ build_script:
   - cmd: cmake --build . --config Release
 
 test_script:
-  - cmd: C:\projects\opencv-image-reading\build-opencv\bin\Release\opencv_test_imgcodecs.exe
-  - cmd: C:\projects\opencv-image-reading\build-opencv\bin\Release\opencv_test_imgcodecs.exe
+  - cmd: C:\projects\opencv-image-reading\build\Release\test-1.exe
+
+artifacts:
+  - path: .\build\test99.jpg
+    name: test99.jpg
+  - path: .\build\test45.jpg
+    name: test45.jpg
