@@ -113,7 +113,7 @@ int A_imreadmultiTest1()
     cout << "imcount:" << tm << endl;
     tm.reset();
     tm.start();
-    bool ret = imreadmulti_("test100.tif", rmats, 0, 99);
+    bool ret = imreadmulti_("test100.tif", IMREAD_ANYCOLOR, rmats, 0, 99);
     tm.stop();
     cout << "read 0-99:" << tm << endl;
     cout << "result of A_imreadmulti : " << ret << endl;
@@ -130,7 +130,7 @@ int A_imreadmultiTest2()
     cout << "imcount:" << tm << endl;
     tm.reset();
     tm.start();
-    bool ret = imreadmulti_("test100.tif", rmats, 100, 99);
+    bool ret = imreadmulti_("test100.tif", IMREAD_ANYCOLOR, rmats, 100, 99);
     tm.stop();
     cout << "read 100-199:" << tm << endl;
     cout << "result of A_imreadmulti : " << ret << endl;
@@ -147,7 +147,7 @@ int A_imreadmultiTest3()
     cout << "imcount:" << tm << endl;
     tm.reset();
     tm.start();
-    bool ret = imreadmulti_("test100.tif", rmats);
+    bool ret = imreadmulti_("test100.tif", IMREAD_ANYCOLOR, rmats, 0, 199);
     tm.stop();
     cout << "read all:" << tm << endl;
     cout << "result of A_imreadmulti : " << ret << endl;
