@@ -10,6 +10,8 @@ using namespace std;
 static bool
 imreadmulti_(const String& filename, int flags, std::vector<Mat>& mats, int start, int count)
 {
+    return 0;
+    /*
     ImageCollection collection;
 
     try {
@@ -49,7 +51,7 @@ imreadmulti_(const String& filename, int flags, std::vector<Mat>& mats, int star
         std::cerr << "imreadmulti_('" << filename << "'): can't read data: unknown exception" << std::endl << std::flush;
     }
 
-    return !mats.empty();
+    return !mats.empty();*/
 }
 
 int imreadmultiTest1()
