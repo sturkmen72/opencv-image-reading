@@ -171,7 +171,7 @@ int main()
     {
         imreadmultiTest1();
         imreadmultiTest2();
-        imreadmultiTest3()
+        imreadmultiTest3();
         VideoCaptureTest(filename);
         imreadTest(filename);
         imreadNEWTest1(filename);
