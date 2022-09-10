@@ -7,6 +7,57 @@
 using namespace cv;
 using namespace std;
 
+int imreadmultiTest1()
+{
+    vector<Mat> rmats;
+    TickMeter tm;
+    tm.start();
+    size_t imcnt = imcount("test100.tif", 1);
+    tm.stop();
+    cout << "imcount:" << tm << endl;
+    tm.reset();
+    tm.start();
+    bool ret = imreadmulti("test100.tif", rmats, 0, 99);
+    tm.stop();
+    cout << "read 0-99:" << tm << endl;
+    cout << "result of imreadmulti : " << ret << endl;
+    return 0;    
+}
+
+int imreadmultiTest2()
+{
+    vector<Mat> rmats;
+    TickMeter tm;
+    tm.start();
+    size_t imcnt = imcount("test100.tif", 1);
+    tm.stop();
+    cout << "imcount:" << tm << endl;
+    tm.reset();
+    tm.start();
+    bool ret = imreadmulti("test100.tif", rmats, 100, 99);
+    tm.stop();
+    cout << "read 100-199:" << tm << endl;
+    cout << "result of imreadmulti : " << ret << endl;
+    return 0;    
+}
+
+int imreadmultiTest3()
+{
+    vector<Mat> rmats;
+    TickMeter tm;
+    tm.start();
+    size_t imcnt = imcount("test100.tif", 1);
+    tm.stop();
+    cout << "imcount:" << tm << endl;
+    tm.reset();
+    tm.start();
+    bool ret = imreadmulti("test100.tif", rmats);
+    tm.stop();
+    cout << "read all:" << tm << endl;
+    cout << "result of imreadmulti : " << ret << endl;
+    return 0;    
+}
+
 int imreadNEWTest1(const char* fmt)
 {
     Mat frame;
@@ -118,6 +169,9 @@ int main()
     const char* filename = "C:/projects/opencv-image-reading/sequence/%08d.jpg";
     for (int i = 0; i < 5; i++)
     {
+        imreadmultiTest1();
+        imreadmultiTest2();
+        imreadmultiTest3()
         VideoCaptureTest(filename);
         imreadTest(filename);
         imreadNEWTest1(filename);
