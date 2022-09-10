@@ -22,7 +22,7 @@ install:
   - cmd: cmake --build . --config Release
   - cmd: cd..
   - cmd: C:\projects\opencv-image-reading\build\Release\test-1.exe
-  - cmd: C:\projects\opencv-image-reading\build\Release\test-1.exe
+  - cmd: C:\projects\opencv-image-reading\build\Release\test-2.exe
 
 build_script:
   - cmd: cd build
@@ -31,6 +31,7 @@ build_script:
 
 test_script:
   - cmd: C:\projects\opencv-image-reading\build\Release\test-1.exe
+  - cmd: C:\projects\opencv-image-reading\build\Release\test-2.exe
 
 artifacts:
   - path: .\build\test199.jpg
