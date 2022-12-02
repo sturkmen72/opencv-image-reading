@@ -28,7 +28,7 @@ test_script:
   - cmd: C:\projects\opencv-image-reading\build\Release\test-1.exe ../fake.bmp.txt
 
 artifacts:
-  - path: .\build\multipage-2.jpg
-    name: multipage-2.jpg
-  - path: .\build\multipage-test.tif
-    name: multipage-test.tif
+  - path: .\build\cloned1.png
+    name: cloned1.png
+  - path: .\build\cloned2.png
+    name: cloned2.png
