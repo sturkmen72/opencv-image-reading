@@ -22,7 +22,7 @@ int main(int argc, char** argv)
     Point centerPt = Point(SplicingImage.cols / 2, SplicingImage.rows / 2);
     seamlessClone(inImage, SplicingImage, mask, centerPt, SplicingImage, NORMAL_CLONE);
     tm.stop();
-    imwrite("cloned1.png", SplicingImage);
+    imwrite("cloned3.png", SplicingImage);
     cout << tm << endl;
 
     cv::resize(img0, inImage, Size(1908, 1493)); //Set the size of the input image
@@ -34,6 +34,6 @@ int main(int argc, char** argv)
     seamlessClone(inImage, SplicingImage, mask2, centerPt, SplicingImage, NORMAL_CLONE);
     tm.stop();
     cout << tm << endl;
-    imwrite("cloned2.png", SplicingImage);
+    imwrite("cloned4.png", SplicingImage);
     return 0;
 }
