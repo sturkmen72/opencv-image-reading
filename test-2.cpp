@@ -10,7 +10,7 @@ using namespace cv;
 
 int main(int argc, char** argv)
 {
-    Mat img0 = imread(samples::findFile("C:\\projects\\opencv-image-reading\\source1.png"));
+    Mat img0 = imread("C:\\projects\\opencv-image-reading\\source1.png");
     TickMeter tm;
     Mat inImage, SplicingImage;
     cv::resize(img0, inImage, Size(936, 936)); //Set the size of the input image
