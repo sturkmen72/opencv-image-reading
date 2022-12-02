@@ -1,129 +1,39 @@
-#include <opencv2/core.hpp>
-#include <opencv2/videoio.hpp>
-#include <opencv2/highgui.hpp>
-#include <opencv2/imgproc.hpp>
+#include "opencv2/core.hpp"
+#include "opencv2/imgcodecs.hpp"
+#include "opencv2/imgproc.hpp"
+#include "opencv2/highgui.hpp"
+#include "opencv2/photo.hpp"
 #include <iostream>
 
-using namespace cv;
 using namespace std;
+using namespace cv;
 
-int imreadNEWTest1(const char* fmt)
+int main(int argc, char** argv)
 {
-    Mat frame;
-    size_t nFrames = 0;
-    int64 t0 = cv::getTickCount();
-    for (int i = 1; i < 101; i++)
-    {
-        String filename = cv::format(fmt, i);
-        imread(filename, frame, IMREAD_UNCHANGED);
+    Mat img0 = imread(samples::findFile("C:\\projects\\opencv-image-reading\\source1.png"));
+    TickMeter tm;
+    Mat inImage, SplicingImage;
+    cv::resize(img0, inImage, Size(936, 936)); //Set the size of the input image
+    tm.reset();
+    tm.start();
+    hconcat(inImage, inImage, SplicingImage);
+    vconcat(SplicingImage, SplicingImage, SplicingImage);
+    Mat mask = 255 * Mat::ones(inImage.rows, inImage.cols, inImage.depth());
+    Point centerPt = Point(SplicingImage.cols / 2, SplicingImage.rows / 2);
+    seamlessClone(inImage, SplicingImage, mask, centerPt, SplicingImage, NORMAL_CLONE);
+    tm.stop();
+    imwrite("cloned1.png", SplicingImage);
+    cout << tm << endl;
 
-        if (frame.empty())
-        {
-            break;
-        }
-        nFrames++;
-    }
-
-    int64 t1 = cv::getTickCount();
-    cout << "Frames captured (new imread 1) : " << cv::format("%5lld", (long long int)nFrames)
-        << "    Average FPS: " << cv::format("%9.1f", (double)getTickFrequency() * nFrames / (t1 - t0))
-        << "    Average time per frame: " << cv::format("%9.2f ms", (double)(t1 - t0) * 1000.0f / (nFrames * getTickFrequency()))
-        << endl;
-    return nFrames > 0 ? 0 : 1;
-}
-
-int imreadNEWTest2(const char* fmt)
-{
-    UMat frame;
-    size_t nFrames = 0;
-    int64 t0 = cv::getTickCount();
-    for (int i = 1; i < 101; i++)
-    {
-        String filename = cv::format(fmt, i);
-        imquery iminfo(filename);
-        if (iminfo.page_count() > 0)
-            imread(filename, frame, IMREAD_UNCHANGED);
-
-        if (frame.empty())
-        {
-            break;
-        }
-        nFrames++;
-    }
-
-    int64 t1 = cv::getTickCount();
-    cout << "Frames captured (new imread 2) : " << cv::format("%5lld", (long long int)nFrames)
-        << "    Average FPS: " << cv::format("%9.1f", (double)getTickFrequency() * nFrames / (t1 - t0))
-        << "    Average time per frame: " << cv::format("%9.2f ms", (double)(t1 - t0) * 1000.0f / (nFrames * getTickFrequency()))
-        << endl;
-    return nFrames > 0 ? 0 : 1;
-}
-
-int imreadTest(const char* fmt)
-{
-    Mat frame;
-    size_t nFrames = 0;
-    int64 t0 = cv::getTickCount();
-    for (int i = 1; i < 101; i++)
-    {
-        String filename = cv::format(fmt, i);
-        frame = imread(filename, IMREAD_UNCHANGED);
-        if (frame.empty())
-        {
-            break;
-        }
-        nFrames++;
-    }
-
-    int64 t1 = cv::getTickCount();
-    cout << "Frames captured (imread)       : " << cv::format("%5lld", (long long int)nFrames)
-        << "    Average FPS: " << cv::format("%9.1f", (double)getTickFrequency() * nFrames / (t1 - t0))
-        << "    Average time per frame: " << cv::format("%9.2f ms", (double)(t1 - t0) * 1000.0f / (nFrames * getTickFrequency()))
-        << endl;
-    return nFrames > 0 ? 0 : 1;
-}
-
-int VideoCaptureTest(const char* filename)
-{
-    Mat frame;
-    VideoCapture capture(filename); // open the first camera
-    if (!capture.isOpened())
-    {
-        cerr << "ERROR: Can't initialize camera capture : " << filename << endl;
-        return 1;
-    }
-
-    size_t nFrames = 0;
-    int64 t0 = cv::getTickCount();
-    for (;;)
-    {
-        capture >> frame; // read the next frame from camera
-        if (frame.empty())
-        {
-            break;
-        }
-        nFrames++;
-    }
-
-    int64 t1 = cv::getTickCount();
-    cout << "Frames captured (VideoCapture) : " << cv::format("%5lld", (long long int)nFrames)
-        << "    Average FPS: " << cv::format("%9.1f", (double)getTickFrequency() * nFrames / (t1 - t0))
-        << "    Average time per frame: " << cv::format("%9.2f ms", (double)(t1 - t0) * 1000.0f / (nFrames * getTickFrequency()))
-        << endl;
-    return nFrames > 0 ? 0 : 1;
-}
-
-int main()
-{
-    const char* filename = "C:/projects/opencv-image-reading/sequence/%08d.jpg";
-    for (int i = 0; i < 5; i++)
-    {
-        VideoCaptureTest(filename);
-        imreadTest(filename);
-        imreadNEWTest1(filename);
-        imreadNEWTest2(filename);
-        cout << "---------------------------------------------------------" << endl;
-    }
-
+    cv::resize(img0, inImage, Size(937, 937)); //Set the size of the input image
+    tm.reset();
+    tm.start();
+    hconcat(inImage, inImage, SplicingImage);
+    vconcat(SplicingImage, SplicingImage, SplicingImage);
+    Mat mask2 = 255 * Mat::ones(inImage.rows, inImage.cols, inImage.depth());
+    seamlessClone(inImage, SplicingImage, mask2, centerPt, SplicingImage, NORMAL_CLONE);
+    tm.stop();
+    cout << tm << endl;
+    imwrite("cloned2.png", SplicingImage);
     return 0;
 }
