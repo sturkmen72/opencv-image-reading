@@ -13,7 +13,7 @@ int main(int argc, char** argv)
     Mat img0 = imread("C:\\projects\\opencv-image-reading\\source1.png");
     TickMeter tm;
     Mat inImage, SplicingImage;
-    cv::resize(img0, inImage, Size(936, 936)); //Set the size of the input image
+    cv::resize(img0, inImage, Size(1897, 1498)); //Set the size of the input image
     tm.reset();
     tm.start();
     hconcat(inImage, inImage, SplicingImage);
@@ -25,7 +25,7 @@ int main(int argc, char** argv)
     imwrite("cloned1.png", SplicingImage);
     cout << tm << endl;
 
-    cv::resize(img0, inImage, Size(937, 937)); //Set the size of the input image
+    cv::resize(img0, inImage, Size(1908, 1493)); //Set the size of the input image
     tm.reset();
     tm.start();
     hconcat(inImage, inImage, SplicingImage);
