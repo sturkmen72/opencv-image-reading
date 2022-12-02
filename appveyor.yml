@@ -8,7 +8,7 @@ install:
   - cmd: echo "compile OpenCV"
   - cmd: git clone https://github.com/opencv/opencv.git
   - cmd: cd opencv
-  - cmd: git reset --hard 5e2c112697889f06fad1d16a2244f29e707572d6
+  - cmd: git reset --hard d343a58580540d3cda46040f073416e0e0944470
   - cmd: cd..
   - cmd: md build-opencv
   - cmd: cd build-opencv
