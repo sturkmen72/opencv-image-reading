@@ -59,6 +59,24 @@ int pngWritingParamsTest()
     Mat img = imread("PNG_SAVED_DEFAULT.png");
     tm.stop();
     std::cout << " \t read time " << tm.getTimeMilli() << " ms." << std::endl;
+
+    tm.reset();
+    tm.start();
+    img = imread("C:/projects/opencv-image-reading/opencv_extra/testdata/highgui/readwrite/read.png");
+    tm.stop();
+    std::cout << " \t read.png read time " << tm.getTimeMilli() << " ms." << std::endl;
+
+    tm.reset();
+    tm.start();
+    img = imread("C:/projects/opencv-image-reading/opencv_extra/testdata/highgui/readwrite/read.png", -1);
+    tm.stop();
+    std::cout << " \t read.png read time " << tm.getTimeMilli() << " ms." << std::endl;
+
+    tm.reset();
+    tm.start();
+    imwrite("C:/projects/opencv-image-reading/opencv_extra/testdata/highgui/readwrite/read1.png", img);
+    tm.stop();
+    std::cout << " \t read.png write time " << tm.getTimeMilli() << " ms." << std::endl;
     return 0;
 }
 
