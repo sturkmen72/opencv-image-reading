@@ -1,16 +1,32 @@
 version: 1.0.{build}
-image: Visual Studio 2019
+image: Visual Studio 2022
 
 platform:
   - x64
 
 install:
+  - cmd: call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
+  # Install Nasm
+  - cmd: appveyor DownloadFile "https://github.com/joedrago/nasm_mirror/raw/master/nasm-2.15.05-win64.zip" -FileName "nasm.zip"
+  - cmd: 7z x "nasm.zip" > nul
+  - cmd: move nasm-* NASM
+  - cmd: set PATH=%PATH%;%CD%\NASM;
+  - cmd: nasm -v
   - cmd: echo "compile OpenCV"
-  - cmd: git clone --depth=1 https://github.com/opencv/opencv.git
+  - cmd: git clone --depth 1 https://github.com/zlib-ng/zlib-ng.git
+  - cmd: cd zlib-ng
+  - cmd: cmake -Bbuild -DCMAKE_PREFIX_PATH=C:/projects/opencv-image-reading -DCMAKE_INSTALL_PREFIX=C:/projects/opencv-image-reading -DBUILD_SHARED_LIBS=OFF -DZLIB_COMPAT=ON -DZLIB_ENABLE_TESTS=OFF -DINSTALL_UTILS=OFF
+  - cmd: cmake --build build --config Release --target install
+  - cmd: cd ..
+  - cmd: git clone -b v1.1.1 https://github.com/AOMediaCodec/libavif.git
+  - cmd: cmake -S libavif -B libavif/build -DBUILD_SHARED_LIBS=ON -DAVIF_CODEC_AOM=LOCAL -DAVIF_LIBYUV=LOCAL -DAVIF_LIBSHARPYUV=LOCAL -DAVIF_JPEG=OFF -DAVIF_ZLIBPNG=OFF -DAVIF_BUILD_APPS=OFF
+  - cmd: cmake --build libavif/build --config Release --target install
+  - cmd: set PATH=%PATH%;C:\projects\opencv-image-reading\build-opencv\bin\Release;C:\Program Files (x86)\libavif\bin;C:\Program Files (x86)\libavif\lib
+  - cmd: git clone --depth=1 --branch=avif_cmake https://github.com/sturkmen72/opencv.git
   - cmd: git clone --depth=1 https://github.com/opencv/opencv_extra.git
   - cmd: md build-opencv
   - cmd: cd build-opencv
-  - cmd: cmake -DWITH_SPNG=ON -DWITH_JASPER=OFF -DWITH_WEBP=OFF -DWITH_OPENEXR=OFF -DWITH_IPP=OFF -DWITH_ADE=OFF -DWITH_ITT=OFF -DBUILD_IPP_IW=OFF -DBUILD_ITT=OFF -DBUILD_OPENEXR=OFF -DBUILD_OPENJPEG=OFF -DBUILD_PROTOBUF=OFF -DBUILD_WEBP=OFF -DBUILD_PERF_TESTS=OFF -DBUILD_JAVA=OFF -DBUILD_opencv_apps=OFF -DBUILD_opencv_gapi=OFF -DBUILD_opencv_features2d=OFF -DBUILD_opencv_flann=OFF -DBUILD_opencv_video=OFF -DBUILD_opencv_ml=OFF -DBUILD_opencv_objdetect=OFF -DBUILD_opencv_photo=OFF -DBUILD_opencv_calib3d=OFF -DBUILD_opencv_stitching=OFF ../opencv -G "Visual Studio 16 2019"
+  - cmd: cmake -DBUILD_PERF_TESTS=ON -DWITH_ZLIB_NG=ON -DWITH_IMGCODEC_GIF=ON -DWITH_SPNG=OFF -DWITH_JPEG=ON -DWITH_TIFF=OFF -DWITH_JASPER=OFF -DWITH_OPENEXR=OFF -DWITH_IPP=OFF -DWITH_ADE=OFF -DWITH_ITT=OFF -DBUILD_OPENJPEG=OFF -DBUILD_PROTOBUF=OFF -DBUILD_JAVA=OFF -DBUILD_opencv_apps=OFF -DBUILD_opencv_dnn=OFF -DBUILD_opencv_gapi=OFF -DBUILD_opencv_features2d=OFF -DBUILD_opencv_flann=OFF -DBUILD_opencv_video=OFF -DBUILD_opencv_ml=OFF -DBUILD_opencv_objdetect=OFF -DBUILD_opencv_photo=OFF -DBUILD_opencv_calib3d=OFF -DBUILD_opencv_stitching=OFF ../opencv -G "Visual Studio 17 2022"
   - cmd: cmake --build . --config Release
   - cmd: cd..
   - cmd: set PATH=%PATH%;C:\projects\opencv-image-reading\build-opencv\bin\Release
@@ -18,19 +34,18 @@ install:
   - cmd: set OPENCV_TEST_DATA_PATH=C:\projects\opencv-image-reading\opencv_extra\testdata
   - cmd: md build
   - cmd: cd build
-  - cmd: cmake .. -G "Visual Studio 16 2019"
+  - cmd: cmake .. -G "Visual Studio 17 2022"
   - cmd: cmake --build . --config Release
   - cmd: cd..
   - cmd: C:\projects\opencv-image-reading\build\Release\test-1.exe
-  - cmd: C:\projects\opencv-image-reading\build\Release\test-1.exe
-  - cmd: C:\projects\opencv-image-reading\build\Release\test-2.exe
   - cmd: C:\projects\opencv-image-reading\build\Release\test-2.exe
 
 build_script:
   - cmd: cd build
-  - cmd: cmake .. -G "Visual Studio 16 2019"
+  - cmd: cmake .. -G "Visual Studio 17 2022"
   - cmd: cmake --build . --config Release
 
 test_script:
+  - cmd: C:\projects\opencv-image-reading\build-opencv\bin\Release\opencv_perf_imgcodecs.exe
   - cmd: C:\projects\opencv-image-reading\build-opencv\bin\Release\opencv_test_imgcodecs.exe
 
