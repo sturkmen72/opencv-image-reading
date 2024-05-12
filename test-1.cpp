@@ -53,7 +53,7 @@ int pngWritingParamsTest()
     imwrite("PNG_SAVED_DEFAULT.png", mat);
     tm.stop();
     std::cout << "------------------------------------------------------------" << std::endl;
-    std::cout << "PNG_SAVED_DEFAULT.png" << "  saved in " << tm.getTimeMilli() << " ms.";
+    std::cout << "PNG_SAVED_DEFAULT.png" << "  saved in " << tm.getTimeMilli() << " ms." << std::endl;
     std::cout << "------------------------------------------------------------" << std::endl;
 
     tm.reset();
@@ -68,6 +68,7 @@ int pngWritingParamsTest()
     img = imread("C:/projects/opencv-image-reading/opencv_extra/testdata/highgui/readwrite/read.png");
     tm.stop();
     std::cout << "\t read.png read time " << tm.getTimeMilli() << " ms." << std::endl;
+    std::cout << "------------------------------------------------------------" << std::endl;
 
     tm.reset();
     tm.start();
@@ -80,6 +81,7 @@ int pngWritingParamsTest()
     imwrite("C:/projects/opencv-image-reading/opencv_extra/testdata/highgui/readwrite/read1.png", img);
     tm.stop();
     std::cout << "\t read.png write time " << tm.getTimeMilli() << " ms." << std::endl;
+    std::cout << "------------------------------------------------------------" << std::endl;
     return 0;
 }
 
@@ -87,6 +89,7 @@ int main()
 {
     Mat src0 = imread("C:/projects/opencv-image-reading/chunk_data_is_too_large.png");
     std::cout << "file : chunk_data_is_too_large.png, its dimensions : " << src0.cols << "x" << src0.rows << std::endl;
+    
     pngWritingParamsTest();
 
     vector<String> filenames;
