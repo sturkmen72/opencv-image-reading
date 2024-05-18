@@ -10,7 +10,7 @@ install:
   - cmd: 7z e NASM.zip
   - cmd: set PATH=%PATH%;C:\projects\opencv-image-reading\NASM
   - cmd: cd ..
-  - cmd: git clone --depth=1 --branch=libjpeg-turbo_3_0_3 https://github.com/sturkmen72/opencv.git
+  - cmd: git clone --depth=1 --branch=upd_libjpeg-turbo_3_0_3 https://github.com/sturkmen72/opencv.git
   - cmd: git clone --depth=1 --branch=4.x https://github.com/sturkmen72/opencv_extra.git
   - cmd: md build-opencv
   - cmd: cd build-opencv
