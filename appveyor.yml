@@ -11,7 +11,7 @@ platform:
   - ARM
 
 install:
-  - git clone --depth=1 --branch=libjpeg-turbo_3_0_3 https://github.com/sturkmen72/opencv.git
+  - git clone --depth=1 --branch=upd_libjpeg-turbo_3_0_3 https://github.com/sturkmen72/opencv.git
   - git clone --depth=1 --branch=4.x https://github.com/opencv/opencv_extra.git
   - brew install nasm
   - mkdir build-opencv
