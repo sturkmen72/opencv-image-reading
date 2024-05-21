@@ -11,7 +11,7 @@ install:
   - cmd: cmake -Bbuild -DCMAKE_PREFIX_PATH=C:/projects/opencv-image-reading -DCMAKE_INSTALL_PREFIX=C:/projects/opencv-image-reading -DBUILD_SHARED_LIBS=OFF -DZLIB_COMPAT=ON -DZLIB_ENABLE_TESTS=OFF -DINSTALL_UTILS=OFF
   - cmd: cmake --build build --config Release --target install
   - cmd: cd ..
-  - cmd: git clone --depth=1 --branch=libjpeg-turbo_3_0_3 https://github.com/sturkmen72/opencv.git
+  - cmd: git clone --depth=1 --branch=zlib-help https://github.com/sturkmen72/opencv.git
   - cmd: git clone --depth=1 --branch=4.x https://github.com/sturkmen72/opencv_extra.git
   - cmd: md build-opencv
   - cmd: cd build-opencv
