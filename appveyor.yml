@@ -16,3 +16,8 @@ install:
   - ./opencv_test_imgcodecs
   - ./opencv_perf_imgcodecs
 
+build_script:
+  - cmd: md build
+  - cmd: cd build
+  - cmd: cmake ..
+  - cmd: cmake --build . --config Release
