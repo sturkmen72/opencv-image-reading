@@ -28,9 +28,9 @@ build_script:
   - ./opencv_perf_imgcodecs
 
 artifacts:
-  - path: ./opencv_extra/testdata/highgui/OpenCV_logo_white.webp
+  - path: /home/appveyor/projects/opencv_extra/testdata/highgui/OpenCV_logo_white.webp
     name: OpenCV_logo_white.webp
-  - path: ./opencv_extra/testdata/highgui/OpenCV_logo_white.tif
+  - path: /home/appveyor/projects/opencv_extra/testdata/highgui/OpenCV_logo_white.tif
     name: OpenCV_logo_white.tif
-  - path: ./opencv_extra/testdata/highgui/OpenCV_logo_white.avif
+  - path: /home/appveyor/projects/opencv_extra/testdata/highgui/OpenCV_logo_white.avif
     name: OpenCV_logo_white.avif
