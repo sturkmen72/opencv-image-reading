@@ -22,10 +22,8 @@ build_script:
   - cmd: cd build
   - cmd: cmake ..
   - cmd: cmake --build . --config Release
-  - cd ..
-  - cd ..
-  - cd build-opencv/bin/
-  - ./opencv_perf_imgcodecs
+  - cmd: cd bin
+  - cmd: test1
 
 artifacts:
   - path: /home/appveyor/projects/opencv_extra/testdata/highgui/OpenCV_logo_white.png
