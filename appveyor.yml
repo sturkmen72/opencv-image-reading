@@ -4,9 +4,7 @@ platform:
   - ARM
 
 install:
-  - sudo apt-get -y install jpeg-xl
-  - sudo apt-get -y install libavif-dev
-  - sudo apt-get install libjpeg-dev libpng-dev libtiff-dev libgif-dev libwebp-dev -y
+  - sudo apt-get install libjpeg-dev libpng-dev libtiff-dev libgif-dev libwebp-dev libavif-dev -y
   - git clone --depth=1 --branch=webp-dev1 https://github.com/sturkmen72/opencv.git
   - git clone --depth=1 --branch=animated_webp_support https://github.com/sturkmen72/opencv_extra.git
   - export OPENCV_TEST_DATA_PATH=$(pwd)/opencv_extra/testdata
