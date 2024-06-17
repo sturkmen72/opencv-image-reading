@@ -26,9 +26,9 @@ build_script:
   - cmd: test1
 
 artifacts:
-  - path: /home/appveyor/projects/opencv_extra/testdata/highgui/OpenCV_logo_white.png
+  - path: /home/appveyor/projects/opencv_extra/testdata/highgui/readwrite/OpenCV_logo_white.png
     name: OpenCV_logo_white.webp
-  - path: /home/appveyor/projects/opencv_extra/testdata/highgui/OpenCV_logo_white.tif
+  - path: /home/appveyor/projects/opencv_extra/testdata/highgui/readwrite/OpenCV_logo_white.tif
     name: OpenCV_logo_white.tif
-  - path: /home/appveyor/projects/opencv_extra/testdata/highgui/OpenCV_logo_white.avif
+  - path: /home/appveyor/projects/opencv_extra/testdata/highgui/readwrite/OpenCV_logo_white.avif
     name: OpenCV_logo_white.avif
