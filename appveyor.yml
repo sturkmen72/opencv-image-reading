@@ -21,6 +21,3 @@ build_script:
   - cmd: cd build
   - cmd: cmake ..
   - cmd: cmake --build . --config Release
-  - cmd: echo TEST
-  - cmd: cd bin
-  - cmd: test1
