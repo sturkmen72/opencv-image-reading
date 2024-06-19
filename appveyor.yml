@@ -24,7 +24,3 @@ build_script:
   - cmd: echo TEST
   - cmd: cd bin
   - cmd: test1
-
-artifacts:
-  - path: /home/appveyor/projects/opencv-image-reading/build-opencv/bin/opencv_test_imgcodecs
-    name: opencv_test_imgcodecs
