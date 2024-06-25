@@ -23,7 +23,7 @@ build_script:
   - cmd: cmake --build . --config Release
   - cmd: echo TEST
   - cmd: cd bin
-  - cmd: test1
+  - cmd: ./test1
 
 artifacts:
   - path: /home/appveyor/projects/opencv-image-reading/opencv_extra/testdata/highgui/readwrite/read.png
