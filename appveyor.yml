@@ -15,8 +15,8 @@ install:
   - make -j$(nproc)
   - cd bin
   - ./opencv_test_imgcodecs
-
-build_script:
+  - cd ..
+  - cd ..
   - mkdir build
   - cd build
   - cmake ..
