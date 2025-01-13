@@ -44,7 +44,7 @@ int pngWritingParamsTest()
             tm.start();
             Mat img = imread(format("PNG_STRATEGY_%d_PNG_COMPRESSION_%d.png", j, i));
             tm.stop();
-            std::cout << " \t read time " << tm.getTimeMilli() << " ms." << std::endl;
+            std::cout << "\t read time " << tm.getTimeMilli() << " ms." << std::endl;
         }
     tm.reset();
     tm.start();
@@ -52,24 +52,48 @@ int pngWritingParamsTest()
     //imwrite("PNG_SAVED_DEFAULT.png", mat, { IMWRITE_PNG_COMPRESSION, 9 });
     imwrite("PNG_SAVED_DEFAULT.png", mat);
     tm.stop();
-    std::cout << "PNG_SAVED_DEFAULT.png" << "  saved in " << tm.getTimeMilli() << " ms.";
+    std::cout << "------------------------------------------------------------" << std::endl;
+    std::cout << "PNG_SAVED_DEFAULT.png" << "  saved in " << tm.getTimeMilli() << " ms." << std::endl;
+    std::cout << "------------------------------------------------------------" << std::endl;
 
     tm.reset();
     tm.start();
     Mat img = imread("PNG_SAVED_DEFAULT.png");
     tm.stop();
-    std::cout << " \t read time " << tm.getTimeMilli() << " ms." << std::endl;
+    std::cout << "\t read time " << tm.getTimeMilli() << " ms." << std::endl;
+    std::cout << "------------------------------------------------------------" << std::endl;
+
+    tm.reset();
+    tm.start();
+    img = imread("/home/appveyor/projects/opencv-image-reading/opencv_extra/testdata/highgui/readwrite/read.png");
+    tm.stop();
+    std::cout << "\t read.png read time " << tm.getTimeMilli() << " ms." << std::endl;
+    std::cout << "------------------------------------------------------------" << std::endl;
+
+    tm.reset();
+    tm.start();
+    img = imread("/home/appveyor/projects/opencv-image-reading/opencv_extra/testdata/highgui/readwrite/read.png", IMREAD_UNCHANGED);
+    tm.stop();
+    std::cout << "\t read.png read time " << tm.getTimeMilli() << " ms." << " IMREAD_UNCHANGED" << std::endl;
+
+    tm.reset();
+    tm.start();
+    imwrite("/home/appveyor/projects/opencv-image-reading/opencv_extra/testdata/highgui/readwrite/read1.png", img);
+    tm.stop();
+    std::cout << "\t read.png write time " << tm.getTimeMilli() << " ms." << std::endl;
+    std::cout << "------------------------------------------------------------" << std::endl;
     return 0;
 }
 
 int main()
 {
-    Mat src0 = imread("C:/projects/opencv-image-reading/chunk_data_is_too_large.png");
+    Mat src0 = imread("/home/appveyor/projects/opencv-image-reading/chunk_data_is_too_large.png");
     std::cout << "file : chunk_data_is_too_large.png, its dimensions : " << src0.cols << "x" << src0.rows << std::endl;
+    
     pngWritingParamsTest();
 
     vector<String> filenames;
-    String folder = "C:/projects/opencv-image-reading/pngsuite/*.png";
+    String folder = "/home/appveyor/projects/opencv-image-reading/pngsuite/*.png";
     glob(folder, filenames);
 
     for (size_t i = 0; i < filenames.size(); i++)

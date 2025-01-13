@@ -15,7 +15,7 @@ int imreadTest(const char* fmt)
     for (int i = 1; i < 101; i++)
     {
         String filename = cv::format(fmt, i);
-        String sfilename = cv::format("C:/projects/opencv-image-reading/sequence/%08d.png", i);
+        String sfilename = cv::format("/home/appveyor/projects/opencv-image-reading/sequence/%08d.png", i);
         frame = imread(filename, IMREAD_UNCHANGED);
         if (frame.empty())
         {
@@ -66,7 +66,7 @@ int VideoCaptureTest(const char* filename)
 
 int main()
 {
-    const char* filename = "C:/projects/opencv-image-reading/sequence/%08d.jpg";
+    const char* filename = "/home/appveyor/projects/opencv-image-reading/sequence/%08d.jpg";
     for (int i = 0; i < 5; i++)
     {
         VideoCaptureTest(filename);
