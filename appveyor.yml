@@ -12,7 +12,8 @@ install:
   - cmd: git clone -b v1.1.1 https://github.com/AOMediaCodec/libavif.git
   - cmd: cd vcpkg
   - cmd: bootstrap-vcpkg.bat
-  - cmd: vcpkg install libavif[core,aom,dav1d]:x64-windows-static
+  - cmd: vcpkg install libavif[core,aom,dav1d]:x64-windows
+  - cmd: vcpkg install libjxl
   - cmd: cd ..
   - cmd: call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
   # Install Nasm
@@ -28,10 +29,10 @@ install:
   - cmd: cd ..
   - cmd: cmake -S libavif -B libavif/build -DBUILD_SHARED_LIBS=ON -DAVIF_CODEC_AOM=LOCAL -DAVIF_LIBYUV=LOCAL -DAVIF_LIBSHARPYUV=LOCAL -DAVIF_JPEG=OFF -DAVIF_ZLIBPNG=OFF -DAVIF_BUILD_APPS=OFF
   - cmd: cmake --build libavif/build --config Release --target install
-  - cmd: set PATH=%PATH%;C:\projects\opencv-image-reading\build-opencv\bin\Release;C:\Program Files (x86)\libavif\bin;C:\Program Files (x86)\libavif\lib
+  - cmd: set PATH=%PATH%;C:\projects\opencv-image-reading\vcpkg\installed\x64-windows\lib;C:\projects\opencv-image-reading\build-opencv\bin\Release;C:\Program Files (x86)\libavif\bin;C:\Program Files (x86)\libavif\lib
   - cmd: md build-opencv
   - cmd: cd build-opencv
-  - cmd: cmake -DBUILD_PERF_TESTS=ON -DWITH_ZLIB_NG=ON -DWITH_IMGCODEC_GIF=ON -DWITH_SPNG=OFF -DWITH_JPEG=ON -DWITH_TIFF=OFF -DWITH_JASPER=OFF -DWITH_OPENEXR=OFF -DWITH_IPP=OFF -DWITH_ADE=OFF -DWITH_ITT=OFF -DBUILD_OPENJPEG=OFF -DBUILD_PROTOBUF=OFF -DBUILD_JAVA=OFF -DBUILD_opencv_apps=OFF -DBUILD_opencv_dnn=OFF -DBUILD_opencv_gapi=OFF -DBUILD_opencv_features2d=OFF -DBUILD_opencv_flann=OFF -DBUILD_opencv_video=OFF -DBUILD_opencv_ml=OFF -DBUILD_opencv_objdetect=OFF -DBUILD_opencv_photo=OFF -DBUILD_opencv_calib3d=OFF -DBUILD_opencv_stitching=OFF ../opencv -G "Visual Studio 17 2022"
+  - cmd: cmake -DBUILD_PERF_TESTS=ON -DWITH_WITH_JPEGXL -DWITH_ZLIB_NG=OFF -DWITH_IMGCODEC_GIF=ON -DWITH_SPNG=OFF -DWITH_JPEG=ON -DWITH_TIFF=OFF -DWITH_JASPER=OFF -DWITH_OPENEXR=OFF -DWITH_IPP=OFF -DWITH_ADE=OFF -DWITH_ITT=OFF -DBUILD_OPENJPEG=OFF -DBUILD_PROTOBUF=OFF -DBUILD_JAVA=OFF -DBUILD_opencv_apps=OFF -DBUILD_opencv_dnn=OFF -DBUILD_opencv_gapi=OFF -DBUILD_opencv_features2d=OFF -DBUILD_opencv_flann=OFF -DBUILD_opencv_video=OFF -DBUILD_opencv_ml=OFF -DBUILD_opencv_objdetect=OFF -DBUILD_opencv_photo=OFF -DBUILD_opencv_calib3d=OFF -DBUILD_opencv_stitching=OFF ../opencv -G "Visual Studio 17 2022"
   - cmd: cmake --build . --config Release
   - cmd: cd..
   - cmd: set PATH=%PATH%;C:\projects\opencv-image-reading\build-opencv\bin\Release
