@@ -18,11 +18,10 @@ install:
   - cd build-opencv
   - cmake -DBUILD_opencv_imgcodecs=OFF -DWITH_ZLIB_NG=ON -DWITH_JPEG=ON -DWITH_JASPER=OFF -DWITH_TIFF=OFF -DWITH_OPENJPEG=OFF -DWITH_WEBP=ON -DWITH_OPENEXR=OFF -DWITH_IPP=OFF -DWITH_ADE=OFF -DWITH_ITT=OFF -DBUILD_IPP_IW=OFF -DBUILD_ITT=OFF -DBUILD_OPENEXR=OFF -DBUILD_OPENJPEG=OFF -DBUILD_PROTOBUF=OFF -DBUILD_WEBP=OFF -DBUILD_PERF_TESTS=ON -DBUILD_JAVA=OFF -DBUILD_opencv_apps=OFF -DBUILD_opencv_dnn=OFF -DBUILD_opencv_gapi=OFF -DBUILD_opencv_features2d=OFF -DBUILD_opencv_flann=OFF -DBUILD_opencv_video=OFF -DBUILD_opencv_ml=OFF -DBUILD_opencv_objdetect=OFF -DBUILD_opencv_photo=OFF -DBUILD_opencv_calib3d=OFF -DBUILD_opencv_stitching=OFF -DCMAKE_BUILD_TYPE=Release ../opencv
   - make
-  - cd ..
   - export OPENCV_TEST_DATA_PATH="/Users/appveyor/projects/opencv-image-reading/opencv_extra/testdata"
-  - cd build-opencv/bin/
-  - ./opencv_test_imgcodecs
-  - ./opencv_perf_imgcodecs
+  - ./bin/opencv_test_imgcodecs
+  - ./bin/opencv_perf_imgcodecs
+  - cd ..
 
 build_script:
   - cmd: md build
