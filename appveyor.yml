@@ -27,7 +27,7 @@ install:
   - cmd: cmake -Bbuild -DCMAKE_PREFIX_PATH=C:/projects/opencv-image-reading -DCMAKE_INSTALL_PREFIX=C:/projects/opencv-image-reading -DBUILD_SHARED_LIBS=OFF -DZLIB_COMPAT=ON -DZLIB_ENABLE_TESTS=OFF -DINSTALL_UTILS=OFF
   - cmd: cmake --build build --config Release --target install
   - cmd: cd ..
-  - cmd: cmake -S libavif -B libavif/build -DBUILD_SHARED_LIBS=ON -DAVIF_CODEC_AOM=LOCAL -DAVIF_LIBYUV=LOCAL -DAVIF_LIBSHARPYUV=LOCAL -DAVIF_JPEG=OFF -DAVIF_ZLIBPNG=OFF -DAVIF_BUILD_APPS=OFF
+  - cmd: cmake -S libavif -B libavif/build -DBUILD_SHARED_LIBS=OFF -DAVIF_CODEC_AOM=LOCAL -DAVIF_LIBYUV=LOCAL -DAVIF_LIBSHARPYUV=LOCAL -DAVIF_JPEG=OFF -DAVIF_ZLIBPNG=OFF -DAVIF_BUILD_APPS=OFF
   - cmd: cmake --build libavif/build --config Release --target install
   - cmd: set PATH=%PATH%;C:\projects\opencv-image-reading\vcpkg\installed\x64-windows\lib;C:\projects\opencv-image-reading\build-opencv\bin\Release;C:\Program Files (x86)\libavif\bin;C:\Program Files (x86)\libavif\lib
   - cmd: md build-opencv
