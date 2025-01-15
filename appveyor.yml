@@ -15,14 +15,14 @@ install:
   - cmd: set PATH=%PATH%;%CD%\NASM;
   - cmd: nasm -v
   - cmd: 7z x "libavif.zip" > nul
-  - cmd: set PATH=%PATH%;C:\projects\opencv-image-reading\libavif;C:\projects\opencv-image-reading\build-opencv\bin\Release
+  - cmd: 7z x "libjxl.zip" > nul
+  - cmd: set PATH=%PATH%;C:\projects\opencv-image-reading\libavif;C:\projects\opencv-image-reading\libjxl;C:\projects\opencv-image-reading\build-opencv\bin\Release
   - cmd: echo "compile OpenCV"
   - cmd: md build-opencv
   - cmd: cd build-opencv
   - cmd: cmake -DBUILD_PERF_TESTS=ON -DWITH_JPEGXL=ON -DWITH_ZLIB_NG=OFF -DWITH_IMGCODEC_GIF=ON -DWITH_SPNG=OFF -DWITH_JPEG=ON -DWITH_TIFF=OFF -DWITH_JASPER=OFF -DWITH_OPENEXR=OFF -DWITH_IPP=OFF -DWITH_ADE=OFF -DWITH_ITT=OFF -DBUILD_OPENJPEG=OFF -DBUILD_PROTOBUF=OFF -DBUILD_JAVA=OFF -DBUILD_opencv_apps=OFF -DBUILD_opencv_dnn=OFF -DBUILD_opencv_gapi=OFF -DBUILD_opencv_features2d=OFF -DBUILD_opencv_flann=OFF -DBUILD_opencv_video=OFF -DBUILD_opencv_ml=OFF -DBUILD_opencv_objdetect=OFF -DBUILD_opencv_photo=OFF -DBUILD_opencv_calib3d=OFF -DBUILD_opencv_stitching=OFF ../opencv -G "Visual Studio 17 2022"
   - cmd: cmake --build . --config Release
   - cmd: cd..
-  - cmd: set PATH=%PATH%;C:\projects\opencv-image-reading\build-opencv\bin\Release
   - cmd: set OpenCV_DIR=C:\projects\opencv-image-reading\build-opencv
   - cmd: set OPENCV_TEST_DATA_PATH=C:\projects\opencv-image-reading\opencv_extra\testdata
   - cmd: md build
