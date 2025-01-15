@@ -1,0 +1,13 @@
+prefix=C:/Program Files (x86)/libavif
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libavif
+Description: Library for encoding and decoding .avif files
+Version: 1.0.4
+Libs: -L${libdir} -lavif
+Libs.private: -lyuv
+Cflags: -I${includedir} -DAVIF_DLL
+Cflags.private: -UAVIF_DLL
+Requires.private: libsharpyuv aom
