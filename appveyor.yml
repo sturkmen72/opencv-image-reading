@@ -12,7 +12,7 @@ install:
   - cmd: md jxl
   - cmd: cd jxl
   - cmd: appveyor DownloadFile "https://github.com/libjxl/libjxl/releases/download/v0.11.1/jxl-x64-windows-static.zip" -FileName "jxl.zip"
-  - cmd: 7z x "jxl.zip"
+  - cmd: 7z x "jxl.zip" > nul
   - cmd: cd ..
   - cmd: call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
   # Install Nasm
@@ -21,7 +21,6 @@ install:
   - cmd: move nasm-* NASM
   - cmd: set PATH=%PATH%;%CD%\NASM;
   - cmd: nasm -v
-  - cmd: echo "compile OpenCV"
   - cmd: cd zlib-ng
   - cmd: cmake -Bbuild -DCMAKE_PREFIX_PATH=C:/projects/opencv-image-reading -DCMAKE_INSTALL_PREFIX=C:/projects/opencv-image-reading -DBUILD_SHARED_LIBS=ON -DZLIB_COMPAT=ON -DZLIB_ENABLE_TESTS=OFF -DINSTALL_UTILS=OFF
   - cmd: cmake --build build --config Release --target install
@@ -29,6 +28,7 @@ install:
   - cmd: cmake -S libavif -B libavif/build -DBUILD_SHARED_LIBS=ON -DAVIF_CODEC_AOM=LOCAL -DAVIF_LIBYUV=LOCAL -DAVIF_LIBSHARPYUV=LOCAL -DAVIF_JPEG=OFF -DAVIF_ZLIBPNG=OFF -DAVIF_BUILD_APPS=OFF
   - cmd: cmake --build libavif/build --config Release --target install
   - cmd: set PATH=%PATH%;C:\projects\opencv-image-reading\jxl;C:\projects\opencv-image-reading\build-opencv\bin\Release;C:\Program Files (x86)\libavif
+  - cmd: echo "compile OpenCV"
   - cmd: md build-opencv
   - cmd: cd build-opencv
   - cmd: cmake -DBUILD_PERF_TESTS=ON -DWITH_JPEGXL=ON -DWITH_ZLIB_NG=OFF -DWITH_IMGCODEC_GIF=ON -DWITH_SPNG=OFF -DWITH_JPEG=ON -DWITH_TIFF=OFF -DWITH_JASPER=OFF -DWITH_OPENEXR=OFF -DWITH_IPP=OFF -DWITH_ADE=OFF -DWITH_ITT=OFF -DBUILD_OPENJPEG=OFF -DBUILD_PROTOBUF=OFF -DBUILD_JAVA=OFF -DBUILD_opencv_apps=OFF -DBUILD_opencv_dnn=OFF -DBUILD_opencv_gapi=OFF -DBUILD_opencv_features2d=OFF -DBUILD_opencv_flann=OFF -DBUILD_opencv_video=OFF -DBUILD_opencv_ml=OFF -DBUILD_opencv_objdetect=OFF -DBUILD_opencv_photo=OFF -DBUILD_opencv_calib3d=OFF -DBUILD_opencv_stitching=OFF ../opencv -G "Visual Studio 17 2022"
