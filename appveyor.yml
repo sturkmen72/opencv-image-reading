@@ -8,8 +8,6 @@ install:
   - cmd: git clone --depth=1 --branch=avif_cmake https://github.com/sturkmen72/opencv.git
   - cmd: git clone --depth=1 https://github.com/opencv/opencv_extra.git
   - cmd: git clone --depth 1 https://github.com/zlib-ng/zlib-ng.git
-  - cmd: md jxl
-  - cmd: cd jxl
   - cmd: call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
   # Install Nasm
   - cmd: appveyor DownloadFile "https://github.com/joedrago/nasm_mirror/raw/master/nasm-2.15.05-win64.zip" -FileName "nasm.zip"
