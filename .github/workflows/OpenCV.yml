@@ -137,7 +137,7 @@ jobs:
           -DBUILD_opencv_apps=OFF \
           -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX=`pwd`/prefix \
-          -DCMAKE_TOOLCHAIN_FILE=${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake \
+          -DCMAKE_TOOLCHAIN_FILE=D:/a/opencv-image-reading/opencv-image-reading/vcpkg/scripts/buildsystems/vcpkg.cmake \
           -DBUILD_opencv_dnn=OFF \
           -DBUILD_opencv_gapi=OFF \
           -DBUILD_opencv_features2d=OFF \
