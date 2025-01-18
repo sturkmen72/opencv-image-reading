@@ -156,6 +156,7 @@ jobs:
         set -x
         cmake --build build --config Release
         export OPENCV_TEST_DATA_PATH=D:/a/opencv-image-reading/opencv-image-reading/opencv_extra/testdata
+        export PATH="/a/opencv-image-reading/opencv-image-reading/vcpkg/installed/x64-windows/bin:$PATH"
         D:/a/opencv-image-reading/opencv-image-reading/build/bin/Release/opencv_test_imgcodecs.exe
 
 
