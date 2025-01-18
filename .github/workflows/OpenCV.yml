@@ -155,7 +155,7 @@ jobs:
       run: |
         set -x
         cmake --build build --config Release
-        export OPENCV_TEST_DATA_PATH=D:/a/opencv-image-reading/opencv-image-reading\opencv_extra\testdata
-        D:/a/opencv-image-reading/opencv-image-reading\build\bin\Release\opencv_test_imgcodecs.exe
+        export OPENCV_TEST_DATA_PATH=D:/a/opencv-image-reading/opencv-image-reading/opencv_extra/testdata
+        D:/a/opencv-image-reading/opencv-image-reading/build/bin/Release/opencv_test_imgcodecs.exe
 
 
