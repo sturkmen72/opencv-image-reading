@@ -117,6 +117,7 @@ jobs:
       run: |
         set -x
         git clone --depth=1 --branch=avif_cmake https://github.com/sturkmen72/opencv.git
+        git clone --depth=1 https://github.com/opencv/opencv_extra.git
         mkdir build
         cmake -Bbuild -H. ${{ matrix.arch }} \
           -DWITH_JPEGXL=ON \
@@ -149,6 +150,12 @@ jobs:
           -DBUILD_opencv_calib3d=OFF \
           -DBUILD_opencv_stitching=OFF \
           ./opencv
-
+    - name: Build
+      shell: 'bash'
+      run: |
+        set -x
+        cmake --build build --config Release
+        export OPENCV_TEST_DATA_PATH=D:/a/opencv-image-reading/opencv-image-reading\opencv_extra\testdata
+        D:/a/opencv-image-reading/opencv-image-reading\build\bin\Release\opencv_test_imgcodecs.exe
 
 
