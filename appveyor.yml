@@ -16,7 +16,6 @@ install:
   - cmd: nasm -v
   - cmd: 7z x "libavif.zip" > nul
   - cmd: 7z x "libjxl.zip" > nul
-  - cmd: dir/s
   - cmd: set PATH=%PATH%;C:\projects\opencv-image-reading\libavif;C:\projects\opencv-image-reading\libjxl;C:\projects\opencv-image-reading\build-opencv\bin\Release
   - cmd: path
   - cmd: echo "compile OpenCV"
