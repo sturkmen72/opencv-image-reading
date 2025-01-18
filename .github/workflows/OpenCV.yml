@@ -112,14 +112,13 @@ jobs:
           pkgconf \
         #
 
-    - name: Compile OpenCV ${{ matrix.triplet }}
-      shell: bash
+    - name: Configure
+      shell: 'bash'
       run: |
+        set -x
         git clone --depth=1 --branch=avif_cmake https://github.com/sturkmen72/opencv.git
-        mkdir build-opencv
-        export PATH=$PATH:/d/a/libjxl/libjxl/prefix:/d/a/libjxl/libjxl/prefix/bin:/d/a/libjxl/libjxl/prefix/lib
-        cmake -B build-opencv \
-          -DCMAKE_TOOLCHAIN_FILE=${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake \
+        mkdir build
+        cmake -Bbuild -H. ${{ matrix.arch }} \
           -DWITH_JPEGXL=ON \
           -DWITH_ZLIB_NG=OFF \
           -DWITH_IMGCODEC_GIF=ON \
@@ -136,6 +135,9 @@ jobs:
           -DBUILD_PROTOBUF=OFF \
           -DBUILD_JAVA=OFF \
           -DBUILD_opencv_apps=OFF \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_INSTALL_PREFIX=`pwd`/prefix \
+          -DCMAKE_TOOLCHAIN_FILE=${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake \
           -DBUILD_opencv_dnn=OFF \
           -DBUILD_opencv_gapi=OFF \
           -DBUILD_opencv_features2d=OFF \
@@ -147,3 +149,6 @@ jobs:
           -DBUILD_opencv_calib3d=OFF \
           -DBUILD_opencv_stitching=OFF \
           ./opencv
+
+
+
