@@ -103,12 +103,11 @@ jobs:
       run: |
         set -x
         ${VCPKG_ROOT}/vcpkg --triplet ${{ matrix.triplet }} install \
-          giflib \
-          libjpeg-turbo \
-          libpng \
-          libwebp \
-          libjxl \
-          libavif \
+          libjpeg-turbo[static] \
+          libpng[static] \
+          libwebp[static] \
+          libjxl[static] \
+          libavif[static] \
           pkgconf \
         #
 
@@ -125,6 +124,9 @@ jobs:
           -DWITH_IMGCODEC_GIF=ON \
           -DWITH_SPNG=OFF \
           -DWITH_JPEG=ON \
+          -DBUILD_JPEG=OFF \
+          -DBUILD_PNG=OFF \
+          -DBUILD_WEBP=OFF \
           -DWITH_TIFF=OFF \
           -DWITH_JASPER=OFF \
           -DWITH_OPENEXR=OFF \
@@ -156,7 +158,6 @@ jobs:
         set -x
         cmake --build build --config Release
         export OPENCV_TEST_DATA_PATH=D:/a/opencv-image-reading/opencv-image-reading/opencv_extra/testdata
-        export PATH="/a/opencv-image-reading/opencv-image-reading/vcpkg/installed/x64-windows/bin:$PATH"
         D:/a/opencv-image-reading/opencv-image-reading/build/bin/Release/opencv_test_imgcodecs.exe
 
 
