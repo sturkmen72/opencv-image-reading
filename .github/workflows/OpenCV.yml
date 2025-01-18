@@ -43,15 +43,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - triplet: x86-windows-static
-            arch: '-A Win32'
           - triplet: x64-windows-static
             arch: '-A x64'
             run_benchmark: true
-          - triplet: x86-windows
-            arch: '-A Win32'
-            static: 'OFF'
-            tools: 'OFF'
           - triplet: x64-windows
             arch: '-A x64'
             static: 'OFF'
@@ -103,11 +97,11 @@ jobs:
       run: |
         set -x
         ${VCPKG_ROOT}/vcpkg --triplet ${{ matrix.triplet }} install \
-          libjpeg-turbo[static] \
-          libpng[static] \
-          libwebp[static] \
-          libjxl[static] \
-          libavif[static] \
+          libjpeg-turbo:x64-windows-static  \
+          libpng:x64-windows-static \
+          libwebp:x64-windows-static \
+          libjxl:x64-windows-static \
+          libavif:x64-windows-static \
           pkgconf \
         #
 
