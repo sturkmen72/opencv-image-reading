@@ -28,7 +28,7 @@ install:
   - cmd: set OPENCV_TEST_DATA_PATH=C:\projects\opencv-image-reading\opencv_extra\testdata
   - cmd: md build
   - cmd: cd build
-  - cmd: cmake .. -G "Visual Studio 17 2022"
+  - cmd: cmake ..
   - cmd: cmake --build . --config Release
   - cmd: cd..
   - cmd: C:\projects\opencv-image-reading\build\Release\test-1.exe
