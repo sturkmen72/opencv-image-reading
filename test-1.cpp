@@ -4,6 +4,15 @@
 using namespace cv;
 using namespace std;
 
+int fileSize(String fname)
+{
+    FILE *f = fopen(fname.c_str(), "rb");
+    fseek(f, 0, SEEK_END);
+    int size = (int)ftell(f);
+    fclose(f);
+    return size;
+}
+
 void createAlphaMat(Mat& mat)
 {
     CV_Assert(mat.channels() == 4);
@@ -18,7 +27,7 @@ void createAlphaMat(Mat& mat)
     }
 }
 
-int pngWritingParamsTest()
+int pngWritingParamsTest(int filter)
 {
     TickMeter tm;
     // Create mat with alpha channel
@@ -30,19 +39,22 @@ int pngWritingParamsTest()
     compression_params.push_back(0);
     compression_params.push_back(IMWRITE_PNG_STRATEGY);
     compression_params.push_back(IMWRITE_PNG_STRATEGY_DEFAULT);
+    compression_params.push_back(IMWRITE_PNG_FILTER);
+    compression_params.push_back(filter);
     for (int i = 0; i < 10; i++)
         for (int j = 0; j < 5; j++)
         {
             compression_params[1] = i;
             compression_params[3] = j;
+            String filename = format("PNG_STRATEGY_%d_PNG_COMPRESSION_%d_%03d.png", j, i, filter);
             tm.start();
-            imwrite(format("PNG_STRATEGY_%d_PNG_COMPRESSION_%d.png", j, i), mat, compression_params);
+            imwrite(filename, mat, compression_params);
             tm.stop();
-            std::cout << format("PNG_STRATEGY_%d_PNG_COMPRESSION_%d.png", j, i) << "  saved in " << tm.getTimeMilli() << " ms.";
+            std::cout << filename << " " << fileSize(filename) << "  saved in " << tm.getTimeMilli() << " ms.";
 			
             tm.reset();
             tm.start();
-            Mat img = imread(format("PNG_STRATEGY_%d_PNG_COMPRESSION_%d.png", j, i));
+            Mat img = imread(filename, IMREAD_UNCHANGED);
             tm.stop();
             std::cout << "\t read time " << tm.getTimeMilli() << " ms." << std::endl;
         }
@@ -89,9 +101,14 @@ int main()
 {
     Mat src0 = imread("C:/projects/opencv-image-reading/chunk_data_is_too_large.png");
     std::cout << "file : chunk_data_is_too_large.png, its dimensions : " << src0.cols << "x" << src0.rows << std::endl;
-    
-    pngWritingParamsTest();
-
+    pngWritingParamsTest(IMWRITE_PNG_NO_FILTERS);
+    pngWritingParamsTest(IMWRITE_PNG_FILTER_NONE); 
+    pngWritingParamsTest(IMWRITE_PNG_FILTER_SUB);    
+    pngWritingParamsTest(IMWRITE_PNG_FILTER_UP);
+    pngWritingParamsTest(IMWRITE_PNG_FILTER_AVG);
+    pngWritingParamsTest(IMWRITE_PNG_FILTER_PAETH);
+    pngWritingParamsTest(IMWRITE_PNG_FAST_FILTERS);
+    pngWritingParamsTest(IMWRITE_PNG_ALL_FILTERS);
     vector<String> filenames;
     String folder = "C:/projects/opencv-image-reading/pngsuite/*.png";
     glob(folder, filenames);
