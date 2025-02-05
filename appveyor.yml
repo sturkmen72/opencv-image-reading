@@ -2,7 +2,7 @@ image: Ubuntu2204
 
 install:
   - sudo apt-get install libjpeg-dev libpng-dev libtiff-dev libgif-dev libwebp-dev libavif-dev -y
-  - git clone --depth=1 --branch=avif_cmake https://github.com/sturkmen72/opencv.git
+  - git clone --depth=1 --branch=clean-up https://github.com/sturkmen72/opencv.git
   - git clone --depth=1 --branch=4.x https://github.com/sturkmen72/opencv_extra.git
   - export OPENCV_TEST_DATA_PATH=$(pwd)/opencv_extra/testdata
   - mkdir build-opencv
