@@ -22,7 +22,7 @@ install:
   - cmd: cmake -S libavif -B libavif/build -DBUILD_SHARED_LIBS=ON -DAVIF_CODEC_AOM=LOCAL -DAVIF_LIBYUV=LOCAL -DAVIF_LIBSHARPYUV=LOCAL -DAVIF_JPEG=OFF -DAVIF_ZLIBPNG=OFF -DAVIF_BUILD_APPS=OFF
   - cmd: cmake --build libavif/build --config Release --target install
   - cmd: set PATH=%PATH%;C:\projects\opencv-image-reading\build-opencv\bin\Release;C:\Program Files (x86);C:\Program Files (x86)\libavif;C:\Program Files (x86)\libavif\bin
-  - cmd: git clone --depth=1 --branch=4.x https://github.com/sturkmen72/opencv.git
+  - cmd: git clone --depth=1 --branch=apng-writeanimation https://github.com/sturkmen72/opencv.git
   - cmd: git clone --depth=1 https://github.com/opencv/opencv_extra.git
   - cmd: md build-opencv
   - cmd: cd build-opencv
