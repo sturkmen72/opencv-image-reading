@@ -41,8 +41,8 @@ int pngWritingParamsTest(int filter)
     compression_params.push_back(IMWRITE_PNG_STRATEGY_DEFAULT);
     compression_params.push_back(IMWRITE_PNG_FILTER);
     compression_params.push_back(filter);
-    for (int i = 0; i < 10; i++)
-        for (int j = 0; j < 5; j++)
+    for (int j = 0; j < 5; j++)
+        for (int i = 0; i < 10; i++)
         {
             compression_params[1] = i;
             compression_params[3] = j;
@@ -65,7 +65,7 @@ int pngWritingParamsTest(int filter)
     imwrite("PNG_SAVED_DEFAULT.png", mat);
     tm.stop();
     std::cout << "------------------------------------------------------------" << std::endl;
-    std::cout << "PNG_SAVED_DEFAULT.png" << "  saved in " << tm.getTimeMilli() << " ms." << std::endl;
+    std::cout << "PNG_SAVED_DEFAULT.png" << fileSize("PNG_SAVED_DEFAULT.png") << "  saved in " << tm.getTimeMilli() << " ms." << std::endl;
     std::cout << "------------------------------------------------------------" << std::endl;
 
     tm.reset();
