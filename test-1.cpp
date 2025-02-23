@@ -101,7 +101,6 @@ int main()
 {
     Mat src0 = imread("C:/projects/opencv-image-reading/chunk_data_is_too_large.png");
     std::cout << "file : chunk_data_is_too_large.png, its dimensions : " << src0.cols << "x" << src0.rows << std::endl;
-    pngWritingParamsTest(IMWRITE_PNG_NO_FILTERS);
     pngWritingParamsTest(IMWRITE_PNG_FILTER_NONE); 
     pngWritingParamsTest(IMWRITE_PNG_FILTER_SUB);    
     pngWritingParamsTest(IMWRITE_PNG_FILTER_UP);
