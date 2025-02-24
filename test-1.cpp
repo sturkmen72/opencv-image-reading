@@ -20,6 +20,16 @@ void createAlphaMat(Mat& mat)
 
 int pngWritingParamsTest()
 {
+    vector<int> filterFlags {
+       IMWRITE_PNG_FILTER_NONE,
+       IMWRITE_PNG_FILTER_SUB,
+       IMWRITE_PNG_FILTER_UP,
+       IMWRITE_PNG_FILTER_AVG,
+       IMWRITE_PNG_FILTER_PAETH,
+       IMWRITE_PNG_FAST_FILTERS,
+       IMWRITE_PNG_ALL_FILTERS
+     };
+
     TickMeter tm;
     // Create mat with alpha channel
     Mat mat(1440, 1920, CV_8UC4);
@@ -30,26 +40,30 @@ int pngWritingParamsTest()
     compression_params.push_back(0);
     compression_params.push_back(IMWRITE_PNG_STRATEGY);
     compression_params.push_back(IMWRITE_PNG_STRATEGY_DEFAULT);
+    compression_params.push_back(IMWRITE_PNG_FILTER);
+    compression_params.push_back(IMWRITE_PNG_FILTER_NONE);
     for (int i = 0; i < 10; i++)
         for (int j = 0; j < 5; j++)
-        {
-            compression_params[1] = i;
-            compression_params[3] = j;
-            tm.start();
-            imwrite(format("PNG_STRATEGY_%d_PNG_COMPRESSION_%d.png", j, i), mat, compression_params);
-            tm.stop();
-            std::cout << format("PNG_STRATEGY_%d_PNG_COMPRESSION_%d.png", j, i) << "  saved in " << tm.getTimeMilli() << " ms.";
-			
-            tm.reset();
-            tm.start();
-            Mat img = imread(format("PNG_STRATEGY_%d_PNG_COMPRESSION_%d.png", j, i));
-            tm.stop();
-            std::cout << "\t read time " << tm.getTimeMilli() << " ms." << std::endl;
-        }
+            for (int k = 0; k < 7; k++)
+            {
+                compression_params[1] = i;
+                compression_params[3] = j;
+                compression_params[5] = filterFlags[k];
+                tm.start();
+                std::vector<unsigned char> buf;
+                imencode(".png", mat, buf, compression_params);
+                tm.stop();
+                std::cout << format("STRATEGY_%d_FILTER_%d_COMPRESSION_%d.png\t", j, filterFlags[k], i) << buf.size() << "\t saved in " << tm.getTimeMilli() << " ms.";
+
+                tm.reset();
+                tm.start();
+                imdecode(buf, IMREAD_COLOR_RGB);
+                tm.stop();
+                std::cout << "\t read time " << tm.getTimeMilli() << " ms." << std::endl;
+            }
     tm.reset();
     tm.start();
 
-    //imwrite("PNG_SAVED_DEFAULT.png", mat, { IMWRITE_PNG_COMPRESSION, 9 });
     imwrite("PNG_SAVED_DEFAULT.png", mat);
     tm.stop();
     std::cout << "------------------------------------------------------------" << std::endl;
@@ -65,20 +79,20 @@ int pngWritingParamsTest()
 
     tm.reset();
     tm.start();
-    img = imread("/home/appveyor/projects/opencv-image-reading/opencv_extra/testdata/highgui/readwrite/read.png");
+    img = imread("C:/projects/opencv-image-reading/opencv_extra/testdata/highgui/readwrite/read.png");
     tm.stop();
     std::cout << "\t read.png read time " << tm.getTimeMilli() << " ms." << std::endl;
     std::cout << "------------------------------------------------------------" << std::endl;
 
     tm.reset();
     tm.start();
-    img = imread("/home/appveyor/projects/opencv-image-reading/opencv_extra/testdata/highgui/readwrite/read.png", IMREAD_UNCHANGED);
+    img = imread("C:/projects/opencv-image-reading/opencv_extra/testdata/highgui/readwrite/read.png", IMREAD_UNCHANGED);
     tm.stop();
     std::cout << "\t read.png read time " << tm.getTimeMilli() << " ms." << " IMREAD_UNCHANGED" << std::endl;
 
     tm.reset();
     tm.start();
-    imwrite("/home/appveyor/projects/opencv-image-reading/opencv_extra/testdata/highgui/readwrite/read1.png", img);
+    imwrite("C:/projects/opencv-image-reading/opencv_extra/testdata/highgui/readwrite/read1.png", img);
     tm.stop();
     std::cout << "\t read.png write time " << tm.getTimeMilli() << " ms." << std::endl;
     std::cout << "------------------------------------------------------------" << std::endl;
@@ -87,13 +101,13 @@ int pngWritingParamsTest()
 
 int main()
 {
-    Mat src0 = imread("/home/appveyor/projects/opencv-image-reading/chunk_data_is_too_large.png");
+    Mat src0 = imread("C:/projects/opencv-image-reading/chunk_data_is_too_large.png");
     std::cout << "file : chunk_data_is_too_large.png, its dimensions : " << src0.cols << "x" << src0.rows << std::endl;
     
     pngWritingParamsTest();
 
     vector<String> filenames;
-    String folder = "/home/appveyor/projects/opencv-image-reading/pngsuite/*.png";
+    String folder = "C:/projects/opencv-image-reading/pngsuite/*.png";
     glob(folder, filenames);
 
     for (size_t i = 0; i < filenames.size(); i++)

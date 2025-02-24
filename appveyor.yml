@@ -5,19 +5,19 @@ platform:
   - x64
 
 install:
-  - cmd: call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
+  #- cmd: call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
   # Install Nasm
-  - cmd: appveyor DownloadFile "https://github.com/joedrago/nasm_mirror/raw/master/nasm-2.15.05-win64.zip" -FileName "nasm.zip"
-  - cmd: 7z x "nasm.zip" > nul
-  - cmd: move nasm-* NASM
-  - cmd: set PATH=%PATH%;%CD%\NASM;
-  - cmd: nasm -v
+  #- cmd: appveyor DownloadFile "https://github.com/joedrago/nasm_mirror/raw/master/nasm-2.15.05-win64.zip" -FileName "nasm.zip"
+  #- cmd: 7z x "nasm.zip" > nul
+  #- cmd: move nasm-* NASM
+  #- cmd: set PATH=%PATH%;%CD%\NASM;
+  #- cmd: nasm -v
   - cmd: echo "compile OpenCV"
-  - cmd: git clone --depth=1 --branch=png https://github.com/sturkmen72/opencv.git
-  - cmd: git clone --depth=1 https://github.com/opencv/opencv_extra.git
+  - cmd: git clone --depth=1 --branch=apng_has_hidden_frame https://github.com/sturkmen72/opencv.git
+  - cmd: git clone --depth=1 --branch=4.x https://github.com/sturkmen72/opencv_extra.git
   - cmd: md build-opencv
   - cmd: cd build-opencv
-  - cmd: cmake -DBUILD_PERF_TESTS=ON -DWITH_ZLIB_NG=OFF -DWITH_IMGCODEC_GIF=OFF -DWITH_SPNG=ON -DWITH_JPEG=OFF -DWITH_TIFF=OFF -DWITH_JASPER=OFF -DWITH_OPENEXR=OFF -DWITH_IPP=OFF -DWITH_ADE=OFF -DWITH_ITT=OFF -DBUILD_opencv_imgcodecs=ON -DBUILD_OPENJPEG=OFF -DBUILD_PROTOBUF=OFF -DBUILD_JAVA=OFF -DBUILD_opencv_apps=OFF -DBUILD_opencv_dnn=OFF -DBUILD_opencv_gapi=OFF -DBUILD_opencv_features2d=OFF -DBUILD_opencv_flann=OFF -DBUILD_opencv_video=OFF -DBUILD_opencv_ml=OFF -DBUILD_opencv_objdetect=OFF -DBUILD_opencv_photo=OFF -DBUILD_opencv_calib3d=OFF -DBUILD_opencv_stitching=OFF ../opencv
+  - cmd: cmake -DBUILD_PERF_TESTS=ON -DWITH_ZLIB_NG=OFF -DWITH_IMGCODEC_GIF=OFF -DWITH_SPNG=OFF -DWITH_JPEG=OFF -DWITH_TIFF=OFF -DWITH_WEBP=OFF -DWITH_JASPER=OFF -DWITH_OPENJPEG=OFF -DBUILD_OPENJPEG=OFF -DWITH_OPENEXR=OFF -DWITH_IPP=OFF -DWITH_ADE=OFF -DWITH_ITT=OFF -DBUILD_opencv_imgcodecs=ON -DBUILD_PROTOBUF=OFF -DBUILD_JAVA=OFF -DBUILD_opencv_apps=OFF -DBUILD_opencv_dnn=OFF -DBUILD_opencv_gapi=OFF -DBUILD_opencv_features2d=OFF -DBUILD_opencv_flann=OFF -DBUILD_opencv_video=OFF -DBUILD_opencv_ml=OFF -DBUILD_opencv_objdetect=OFF -DBUILD_opencv_photo=OFF -DBUILD_opencv_calib3d=OFF -DBUILD_opencv_stitching=OFF ../opencv
   - cmd: cmake --build . --config Release
   - cmd: cd..
   - cmd: set PATH=%PATH%;C:\projects\opencv-image-reading\build-opencv\bin\Release
