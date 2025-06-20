@@ -13,7 +13,7 @@ install:
   #- cmd: set PATH=%PATH%;%CD%\NASM;
   #- cmd: nasm -v
   - cmd: echo "compile OpenCV"
-  - cmd: git clone --depth=1 --branch=exif https://github.com/sturkmen72/opencv.git
+  - cmd: git clone --depth=1 --branch=apng_has_hidden_frame1 https://github.com/sturkmen72/opencv.git
   - cmd: git clone --depth=1 --branch=4.x https://github.com/sturkmen72/opencv_extra.git
   - cmd: md build-opencv
   - cmd: cd build-opencv
