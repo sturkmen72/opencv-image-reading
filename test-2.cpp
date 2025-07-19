@@ -19,7 +19,7 @@ std::string flag_names(int value)
         {cv::IMREAD_UNCHANGED,           "IMREAD_UNCHANGED"},
         {cv::IMREAD_GRAYSCALE,           "IMREAD_GRAYSCALE"},
         {cv::IMREAD_COLOR,               "IMREAD_COLOR"},
-        {cv::IMREAD_COLOR_RGB,           "IMREAD_COLOR_RGB"},
+        {256,           "IMREAD_COLOR_RGB"},
         {cv::IMREAD_ANYDEPTH,            "IMREAD_ANYDEPTH"},
         {cv::IMREAD_ANYCOLOR,            "IMREAD_ANYCOLOR"},
         {cv::IMREAD_LOAD_GDAL,           "IMREAD_LOAD_GDAL"},
