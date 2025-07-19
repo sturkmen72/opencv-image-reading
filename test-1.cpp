@@ -18,8 +18,17 @@ void createAlphaMat(Mat& mat)
     }
 }
 
+
 int pngWritingParamsTest()
 {
+    int   IMWRITE_PNG_FILTER_NONE           = 8;
+    int   IMWRITE_PNG_FILTER_SUB            = 16;
+    int   IMWRITE_PNG_FILTER_UP             = 32;
+    int   IMWRITE_PNG_FILTER_AVG            = 64;
+    int   IMWRITE_PNG_FILTER_PAETH          = 128;
+    int   IMWRITE_PNG_FAST_FILTERS          = (IMWRITE_PNG_FILTER_NONE | IMWRITE_PNG_FILTER_SUB | IMWRITE_PNG_FILTER_UP);
+    int   IMWRITE_PNG_ALL_FILTERS           = (IMWRITE_PNG_FAST_FILTERS | IMWRITE_PNG_FILTER_AVG | IMWRITE_PNG_FILTER_PAETH);
+    int   IMREAD_COLOR_RGB = 256;
     vector<int> filterFlags {
        IMWRITE_PNG_FILTER_NONE,
        IMWRITE_PNG_FILTER_SUB,
