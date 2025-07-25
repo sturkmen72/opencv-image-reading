@@ -37,6 +37,6 @@ build_script:
   - cmd: cmake --build . --config Release
 
 test_script:
-  - cmd: C:\projects\opencv-image-reading\build-opencv\bin\Release\opencv_perf_imgcodecs.exe --perf_force_samples=10
+  - cmd: C:\projects\opencv-image-reading\build-opencv\bin\Release\opencv_perf_imgcodecs.exe --perf_force_samples=20
   - cmd: C:\projects\opencv-image-reading\build-opencv\bin\Release\opencv_test_imgcodecs.exe
 
