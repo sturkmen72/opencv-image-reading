@@ -5,14 +5,13 @@ platform:
   - x64
 
 install:
-  #- cmd: call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
+  - cmd: call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
   # Install Nasm
-  #- cmd: appveyor DownloadFile "https://github.com/joedrago/nasm_mirror/raw/master/nasm-2.15.05-win64.zip" -FileName "nasm.zip"
-  #- cmd: 7z x "nasm.zip" > nul
-  #- cmd: move nasm-* NASM
-  #- cmd: set PATH=%PATH%;%CD%\NASM;
-  #- cmd: nasm -v
-  - cmd: echo "compile OpenCV"
+  - cmd: appveyor DownloadFile "https://github.com/joedrago/nasm_mirror/raw/master/nasm-2.15.05-win64.zip" -FileName "nasm.zip"
+  - cmd: 7z x "nasm.zip" > nul
+  - cmd: move nasm-* NASM
+  - cmd: set PATH=%PATH%;%CD%\NASM;
+  - cmd: nasm -v
   - cmd: git clone --depth=1 --branch=exif https://github.com/sturkmen72/opencv.git
   - cmd: git clone --depth=1 --branch=4.x https://github.com/sturkmen72/opencv_extra.git
   - cmd: md build-opencv
@@ -37,6 +36,6 @@ build_script:
   - cmd: cmake --build . --config Release
 
 test_script:
-  - cmd: C:\projects\opencv-image-reading\build-opencv\bin\Release\opencv_perf_imgcodecs.exe --perf_force_samples=20
+  - cmd: C:\projects\opencv-image-reading\build-opencv\bin\Release\opencv_perf_imgcodecs.exe --perf_force_samples=5
   - cmd: C:\projects\opencv-image-reading\build-opencv\bin\Release\opencv_test_imgcodecs.exe
 
