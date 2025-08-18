@@ -13,11 +13,11 @@ install:
   #- cmd: set PATH=%PATH%;%CD%\NASM;
   #- cmd: nasm -v
   - cmd: echo "compile OpenCV"
-  - cmd: git clone --depth=1 --branch=metadata https://github.com/sturkmen72/opencv.git
+  - cmd: git clone --depth=1 --branch=exif https://github.com/sturkmen72/opencv.git
   - cmd: git clone --depth=1 --branch=4.x https://github.com/sturkmen72/opencv_extra.git
   - cmd: md build-opencv
   - cmd: cd build-opencv
-  - cmd: cmake -DBUILD_LIST="videoio,ts" -DBUILD_PERF_TESTS=ON -DWITH_ZLIB_NG=OFF -DWITH_IMGCODEC_GIF=OFF -DWITH_SPNG=OFF -DWITH_JPEG=OFF -DWITH_TIFF=ON -DWITH_WEBP=OFF -DWITH_JASPER=OFF -DWITH_OPENJPEG=OFF -DWITH_OPENEXR=OFF -DWITH_IPP=OFF -DWITH_ADE=OFF -DWITH_ITT=OFF -DBUILD_PROTOBUF=OFF -DBUILD_JAVA=OFF ../opencv
+  - cmd: cmake -DBUILD_LIST="videoio,ts" -DBUILD_PERF_TESTS=ON -DWITH_ZLIB_NG=OFF -DWITH_IMGCODEC_GIF=OFF -DWITH_SPNG=OFF -DWITH_JPEG=OFF -DWITH_TIFF=OFF -DWITH_WEBP=OFF -DWITH_JASPER=OFF -DWITH_OPENJPEG=OFF -DWITH_OPENEXR=OFF -DWITH_IPP=OFF -DWITH_ADE=OFF -DWITH_ITT=OFF -DBUILD_PROTOBUF=OFF -DBUILD_JAVA=OFF ../opencv
   - cmd: cmake --build . --config Release
   - cmd: cd..
   - cmd: set PATH=%PATH%;C:\projects\opencv-image-reading\build-opencv\bin\Release
