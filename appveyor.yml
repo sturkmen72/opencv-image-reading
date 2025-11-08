@@ -16,7 +16,8 @@ install:
   - cmd: git clone --depth=1 --branch=4.x https://github.com/sturkmen72/opencv_extra.git
   - cmd: md build-opencv
   - cmd: cd build-opencv
-  - cmd: cmake -A Win32 -DBUILD_LIST="videoio,ts" CV_DISABLE_OPTIMIZATION=ON -DBUILD_PERF_TESTS=ON -DWITH_ZLIB_NG=OFF -DWITH_IMGCODEC_GIF=OFF -DWITH_SPNG=OFF -DWITH_JPEG=OFF -DWITH_TIFF=OFF -DWITH_WEBP=OFF -DWITH_JASPER=OFF -DWITH_OPENJPEG=OFF -DWITH_OPENEXR=OFF -DWITH_IPP=OFF -DWITH_ADE=OFF -DWITH_ITT=OFF -DBUILD_PROTOBUF=OFF -DBUILD_JAVA=OFF ../opencv
+  - cmd: set _CL_=/fsanitize=address /GS- /wd5072 & set _LINK_=/InferASanLibs /incremental:no /debug
+  - cmd: cmake -A Win32 -DBUILD_LIST="videoio,ts" -DCMAKE_SYSTEM_VERSION=10.0.26100.0 -DOPENCV_ENABLE_MEMORY_SANITIZER=ON -DCV_DISABLE_OPTIMIZATION=OFF -DBUILD_PERF_TESTS=ON -DWITH_ZLIB_NG=OFF -DWITH_IMGCODEC_GIF=OFF -DWITH_SPNG=OFF -DWITH_JPEG=OFF -DWITH_TIFF=OFF -DWITH_WEBP=OFF -DWITH_JASPER=OFF -DWITH_OPENJPEG=OFF -DWITH_OPENEXR=OFF -DWITH_IPP=OFF -DWITH_ADE=OFF -DWITH_ITT=OFF -DBUILD_PROTOBUF=OFF -DBUILD_JAVA=OFF ../opencv
   - cmd: cmake --build . --config Release
   - cmd: cd..
   - cmd: set PATH=%PATH%;C:\projects\opencv-image-reading\build-opencv\bin\Release
